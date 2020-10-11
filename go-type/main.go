@@ -2,10 +2,32 @@ package main
 
 import "fmt"
 
-//定义全局变量
-var x = 100
+/*
+int和int64运行的结果一样。int64是有符号 64 位整型，而在64位操作系统中int的大小也是64位（8字节）。
+int is a signed integer type that is at least 32 bits in size. It is a distinct type, however, and not an alias for, say, int32.
+*/
+var x int = 100
 
+var b1 *int
+var b2 []int
+var b3 map[string]int
+var b4 chan int
+var b5 func(string) int
+var b6 error // error 是接口
+
+//定义常量
 const y = 123
+const (
+	number = 100
+	name   = "linda"
+)
+const (
+	a = iota
+	b
+	c
+	d
+	e
+)
 
 func main() {
 	//println 是 builtin 包提供，语言内置，而 fmt.Println 来自标准库
@@ -20,6 +42,8 @@ func main() {
 	x := "abc"
 	fmt.Println(&x, x)
 
-	println(y)
+	println(y) //print 123
+
+	fmt.Println(e) // print 4
 
 }
