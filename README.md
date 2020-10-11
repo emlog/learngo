@@ -65,8 +65,8 @@ func main() {
 运行时恒定不改变的值
 
 ```go
-const x, y int = 123,0x22
 const s = "hello world"
+const x, y int = 123, 0x22
 const (
     i, f = 1, 0.123
     b = false
@@ -92,7 +92,6 @@ fmt.Println(a,b,c,d,e,f,g,h,i)
 
 ### channel  chan 管道
 ch := make(chan int) //创建了一个没有缓冲区，只能读写int数据类型的channel
-
 
 ### 指针
 一个指针的值是另一个变量的地址（一个指针对应变量在内存中的存储位置）。通过指针，我们可以直接读或更新对应变量的值，而不需要知道该变量的名字（如果变量有名字的话）。
@@ -273,12 +272,11 @@ func (p *Point) ScaleBy(factor float64) {
 在Go语言中，每一个并发的执行单元叫作一个goroutine。当一个程序启动时，其主函数即在一个单独的goroutine中运行，我们叫它main goroutine。
 新的goroutine会用go语句来创建。在语法上，go语句是一个普通的函数或方法调用前加上关键字go。go语句会使其语句中的函数在一个新创建的goroutine中运行。而go语句本身会迅速地完成。
 
-如果说goroutine是Go语言程序的并发体的话，那么channels则是它们之间的通信机制。一个channel是一个通信机制，它可以让一个goroutine通过它给另一个goroutine发送值信息。
-每个channel都有一个特殊的类型，也就是channels可发送数据的类型。一个可以发送int类型数据的channel一般写为chan int。
-
-使用内置的make函数，我们可以创建一个channel：
-
+### 通道（channel）
+通道（channel）是用来传递数据的一个数据结构。使用内置的make函数，我们可以创建一个channel：
+```go
 ch := make(chan int) // ch has type 'chan int'
+```
 
 ### 工具链
 
