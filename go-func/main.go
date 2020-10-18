@@ -1,3 +1,6 @@
+/*
+函数示例
+*/
 package main
 
 import "fmt"

@@ -1,3 +1,6 @@
+/*
+表达式示例：控制结构
+*/
 package main
 
 import "fmt"

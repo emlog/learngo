@@ -1,10 +1,11 @@
+/*
+数据示例
+*/
 package main
 
 import "fmt"
 
-/*
-定义数组
-*/
+//定义数组
 var colorsList [3]string
 var balance = [5]float32{1000.0, 2.0, 3.4, 7.0, 50.0}
 
