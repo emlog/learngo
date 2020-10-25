@@ -277,9 +277,13 @@ func (p *Point) ScaleBy(factor float64) {
 ch := make(chan int) // ch has type 'chan int'
 ```
 
-### 工具链
+### 工具
 
-测试框架：单元测试、性能测试、代码覆盖率、PPROF
+* 测试框架：单元测试、性能测试、代码覆盖率、PPROF
+* gofmt 保存的时候自动 格式化go代码
+* goimports 保存的时候自动导入处理包 (需要先安装: go get golang.org/x/tools/cmd/goimports)
+* gometalinter 保存的时候自动检查go语法
+
 
 ### 相关文档
 
