@@ -317,7 +317,7 @@ ch := make(chan int) // ch has type 'chan int'
 * https://golang.org/pkg/ 【GO标准库中文网：英文】
 * https://books.studygolang.com/The-Golang-Standard-Library-by-Example/ 【GO标准库中文网：中文】
 * https://gorm.io/zh_CN/docs/index.html 【GORM 指南】
-* Go语言101 https://gfw.go101.org/article/101.html
+* https://gfw.go101.org/article/101.html 【Go语言101 】
 
 
 
