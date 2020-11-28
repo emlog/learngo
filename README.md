@@ -312,11 +312,12 @@ ch := make(chan int) // ch has type 'chan int'
 * gometalinter 保存的时候自动检查go语法
 
 
-### 相关文档
+### 参考文档
 
 * https://golang.org/pkg/ 【GO标准库中文网：英文】
 * https://books.studygolang.com/The-Golang-Standard-Library-by-Example/ 【GO标准库中文网：中文】
 * https://gorm.io/zh_CN/docs/index.html 【GORM 指南】
+* Go语言101 https://gfw.go101.org/article/101.html
 
 
 
