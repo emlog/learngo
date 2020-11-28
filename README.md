@@ -114,6 +114,19 @@ fmt.Println(p == q) // "false"
 
 在大多数高级编程语言中，数据通常被抽象为各种类型（type）和值（value）。 一个类型可以看作是值的模板。一个值可以看作是某个类型的实例。 大多数编程语言支持自定义类型和若干预定义类型（即内置类型）。 一门语言的类型系统可以说是这门语言的灵魂。
 
+Go支持如下内置基本类型：
+
+* 一种内置布尔类型：bool。
+* 11种内置整数类型：int8、uint8、int16、uint16、int32、uint32、int64、uint64、int、uint和uintptr。
+* 两种内置浮点数类型：float32和float64。
+* 两种内置复数类型：complex64和complex128。
+* 一种内置字符串类型：string。
+
+Go中有两种内置类型别名（type alias）：
+
+* byte是uint8的内置别名。 我们可以将byte和uint8看作是同一个类型。
+* rune是int32的内置别名。 我们可以将rune和int32看作是同一个类型。
+
 ### type，自定义类型
 
 type Celsius float64    // 摄氏温度
