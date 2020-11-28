@@ -127,6 +127,16 @@ Go中有两种内置类型别名（type alias）：
 * byte是uint8的内置别名。 我们可以将byte和uint8看作是同一个类型。
 * rune是int32的内置别名。 我们可以将rune和int32看作是同一个类型。
 
+Go也支持类型转换。 一个显式类型转换的形式为T(v)，其表示将一个值v转换为类型T。
+
+```go
+uint(1.0)
+int8(-123)
+string(65)          // "A"
+string('A')         // "A"
+string('\u68ee')    // "森"
+```
+
 ### type，自定义类型
 
 type Celsius float64    // 摄氏温度
