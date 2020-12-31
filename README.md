@@ -17,6 +17,15 @@ export GO111MODULE=auto
 * GO111MODULE=on，go命令行会使用modules，而一点也不会去GOPATH目录下查找。
 * GO111MODULE=auto，默认值，go命令行将会根据当前目录来决定是否启用module功能。这种情况下可以分为两种情形：1、当前目录在GOPATH/src之外且该目录包含go.mod文件，2、当前文件在包含go.mod文件的目录下面。
 
+
+解决无法安装 golang.org/x/…的包。并且在国内从 GitHub 获取模块的速度慢的问题。
+
+* #开启go mod
+* go env -w GO111MODULE=on
+* #1、七牛云
+* go env -w  GOPROXY=https://goproxy.cn,direct
+* go mod init xxxx 
+
 ### 命名
 * 作用于较大或生命周期较长的变量：推荐使用驼峰式命名，当名字有几个单词组成的时优先使用大小写分隔，而不是优先用下划线分隔
 * 局部变量：尽量使用短小的名字，你会经常看到i之类的短名字，而不是冗长的theLoopIndex命名
