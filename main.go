@@ -1,11 +1,16 @@
 package main
 
-import "fmt"
-import "github.com/emlog/goexample/go-packages"
+import (
+	"fmt"
+	"strconv"
+)
 
 func main() {
 	fmt.Printf("Hello, world.\n")
 
-	gopkgs.RunTest()
+	//类型转换，int to string
+	a := 65
+	b := strconv.Itoa(a)
+	fmt.Printf("b is %s \n", b)
 
 }
