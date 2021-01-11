@@ -59,7 +59,6 @@ func main() {
 5. 数组或结构体等聚合类型对应的零值是每个元素或字段都是对应该类型的零值，
 
 ### 常量
-运行时恒定不改变的值
 
 ```go
 const s = "hello world"
@@ -86,9 +85,6 @@ const (
 fmt.Println(a,b,c,d,e,f,g,h,i)
 //运行结果：0 1 2 ha ha 100 100 7 8
 ```
-
-### channel  chan 管道
-ch := make(chan int) //创建了一个没有缓冲区，只能读写int数据类型的channel
 
 ### 指针
 一个指针的值是另一个变量的地址（一个指针对应变量在内存中的存储位置）。通过指针，我们可以直接读或更新对应变量的值，而不需要知道该变量的名字（如果变量有名字的话）。
@@ -174,7 +170,7 @@ float32  和 float64
 ```go
 s := "hello, world"
 fmt.Println(len(s))     // "12"
-fmt.Println(s[0]) // "104" ('h' 索引操作s[i]返回第i个字节的字节值)
+fmt.Println(s[0])   // "104" ('h' 索引操作s[i]返回第i个字节的字节值)
 fmt.Println(s[0:5]) // "hello"
 fmt.Println(s[0:1]) // "h"
 ```
@@ -322,7 +318,14 @@ goroutine很像线程，但是它占用的内存远少于线程，使用它需�
 ### 通道（channel）
 通道（channel）是用来传递数据的一个数据结构。使用内置的make函数，我们可以创建一个channel：
 ```go
-ch := make(chan int) // ch has type 'chan int'
+c := make(chan int)  // 分配一个通道
+// 在Go程中启动排序。当它完成后，在通道上发送信号。
+go func() {
+	list.Sort()
+	c <- 1  // 发送信号，什么值无所谓。
+}()
+doSomethingForAWhile()
+<-c   // 等待排序结束，丢弃发来的值。
 ```
 
 ### 工具
