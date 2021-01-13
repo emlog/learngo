@@ -106,6 +106,15 @@ p := new(int)
 q := new(int)
 fmt.Println(p == q) // "false"
 
+## 表达式和语句
+在Go中 ++ 和 -- 只能作为语句而非表达式
+```go
+a := 1
+a ++  // 注意：不能写成 ++ a 或 -- a 必须放在右边使用
+b := a++ // 此处为错误的用法，不能写在一行，要单独作为语句使用
+fmt.Println(a) // 2
+```
+
 ## 类型
 
 在大多数高级编程语言中，数据通常被抽象为各种类型（type）和值（value）。 一个类型可以看作是值的模板。一个值可以看作是某个类型的实例。 大多数编程语言支持自定义类型和若干预定义类型（即内置类型）。 一门语言的类型系统可以说是这门语言的灵魂。
@@ -362,7 +371,7 @@ func main() {
 ```
 
 
-### 工具
+## 工具
 
 * 测试框架：单元测试、性能测试、代码覆盖率、PPROF
 * gofmt 保存的时候自动 格式化go代码
@@ -370,7 +379,7 @@ func main() {
 * gometalinter 保存的时候自动检查go语法
 
 
-### 参考文档
+## 参考文档
 
 * https://golang.org/pkg/ 【GO标准库中文网：英文】
 * https://books.studygolang.com/The-Golang-Standard-Library-by-Example/ 【GO标准库中文网：中文】
