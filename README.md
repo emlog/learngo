@@ -1,7 +1,9 @@
-# golang学习笔记
-这里包含了GO语言的学习笔记和一些可以运行的示例。
+# 简易golang学习笔记
+这里包含了GO语言的学习笔记和一些可以运行的示例，方便快速了解go语言的基本语法和特性。
 
-## mac下设置GOPATH
+## 搭建golang开发环境
+
+### mac下设置GOPATH
 
 vi ~/.zshrc 添加以下代码 (永久设置环境变量)
 
@@ -105,15 +107,6 @@ p := new(int)   // p, *int 类型, 指向匿名的 int 变量
 p := new(int)
 q := new(int)
 fmt.Println(p == q) // "false"
-
-## 表达式和语句
-在Go中 ++ 和 -- 只能作为语句而非表达式
-```go
-a := 1
-a ++  // 注意：不能写成 ++ a 或 -- a 必须放在右边使用
-b := a++ // 此处为错误的用法，不能写在一行，要单独作为语句使用
-fmt.Println(a) // 2
-```
 
 ## 类型
 
@@ -257,6 +250,55 @@ Go语言对于这些标准格式的编码和解码都有良好的支持，由标
 json.Marshal //将切片转换成json
 json.MarshalIndent //转换后的json更易读
 json.Unmarshal // 解码json
+```
+
+## 表达式和语句
+在Go中 ++ 和 -- 只能作为语句而非表达式
+```go
+a := 1
+a ++  // 注意：不能写成 ++ a 或 -- a 必须放在右边使用
+b := a++ // 此处为错误的用法，不能写在一行，要单独作为语句使用
+fmt.Println(a) // 2
+```
+
+### 流程控制语法
+Go语言中有三种基本的流程控制代码块：
+* if-else条件分支代码块；
+* for循环代码块；
+* switch-case多条件分支代码块。
+
+```go
+// InitSimpleStatement部分是可选的,Condition必须为一个结果为布尔值的表达式
+if InitSimpleStatement; Condition {
+	// do something
+} else {
+	// do something
+}
+
+// 在每个循环步的结尾，步尾语句（PostSimpleStatement）将被执行
+for InitSimpleStatement; Condition; PostSimpleStatement {
+	// do something
+}
+for i := 0; i < 10; i++ {
+	fmt.Println(i)
+}
+
+// switch InitSimpleStatement; CompareOperand
+switch n := rand.Intn(100); n%9 {
+	case 0:
+        fmt.Println(n, "is a multiple of 9.")
+        fallthrough // 跳到下个代码块,一条fallthrough语句必须为一个分支代码块中的最后一条语句
+	case 1, 2, 3:
+		fmt.Println(n, "mod 9 is 1, 2 or 3.")
+		break // 这里的break语句可有可无的，效果是一样的。执行不会跳到下一个分支。
+	case 4, 5, 6:
+		fmt.Println(n, "mod 9 is 4, 5 or 6.")
+	default:
+        fmt.Println(n, "mod 9 is 7 or 8.")
+        fallthrough // error: 不能出现在最后一个分支中
+    }
+}
+
 ```
 
 ## 函数
