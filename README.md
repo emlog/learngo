@@ -1,5 +1,5 @@
-# 简易golang学习笔记
-这里包含了GO语言的学习笔记和一些可以运行的示例，方便快速了解go语言的基本语法和特性。
+# Go语言学习笔记
+这里包含了Go语言的学习笔记和一些可以运行的示例，方便快速了解go语言的基本语法和特性。
 
 ## 搭建golang开发环境
 
@@ -91,22 +91,24 @@ fmt.Println(a,b,c,d,e,f,g,h,i)
 ## 指针
 一个指针的值是另一个变量的地址（一个指针对应变量在内存中的存储位置）。通过指针，我们可以直接读或更新对应变量的值，而不需要知道该变量的名字（如果变量有名字的话）。
 ```go
+// &x 取地址表达式（取x变量的内存地址）
+// *p 表达式对应p指针指向的变量的值
 x := 1
 p := &x         // p, of type *int, points to x
 fmt.Println(*p) // "1"
 *p = 2          // equivalent to x = 2
 fmt.Println(x)  // "2"
 ```
-&x 取地址表达式（取x变量的内存地址）
-*p 表达式对应p指针指向的变量的值
 
-表达式new(T)将创建一个T类型的匿名变量，初始化为T类型的零值，然后返回变量地址。
+```go
+// 表达式new(T)将创建一个T类型的匿名变量，初始化为T类型的零值，然后返回变量地址。
 p := new(int)   // p, *int 类型, 指向匿名的 int 变量
 
-每次调用new函数都是返回一个新的变量的地址，因此下面两个地址是不同的：
+// 每次调用new函数都是返回一个新的变量的地址，因此下面两个地址是不同的：
 p := new(int)
 q := new(int)
 fmt.Println(p == q) // "false"
+```
 
 ## 类型
 
@@ -120,13 +122,7 @@ Go支持如下内置基本类型：
 * 两种内置复数类型：complex64和complex128。
 * 一种内置字符串类型：string。
 
-Go中有两种内置类型别名（type alias）：
-
-* byte是uint8的内置别名。 我们可以将byte和uint8看作是同一个类型。
-* rune是int32的内置别名。 我们可以将rune和int32看作是同一个类型。
-
 Go也支持类型转换。 一个显式类型转换的形式为T(v)，其表示将一个值v转换为类型T。
-
 ```go
 uint(1.0)
 int8(-123)
@@ -134,6 +130,30 @@ string(65)          // "A"
 string('A')         // "A"
 string('\u68ee')    // "森"
 ```
+
+### 整型
+11种内置整数类型：int8、uint8、int16、uint16、int32、uint32、int64、uint64、int、uint和uintptr。
+
+Go中有两种内置类型别名（type alias）：
+* byte是uint8的内置别名。 我们可以将byte和uint8看作是同一个类型。
+* rune是int32的内置别名。 我们可以将rune和int32看作是同一个类型。
+
+### 浮点数
+float32  和 float64 
+通常应该优先使用float64类型，因为float32类型的累计计算误差很容易扩散，并且float32能精确表示的正整数并不是很大（译注：因为float32的有效bit位只有23个，
+其它的bit位用于指数和符号；当整数大于23bit能表达的范围时，float32的表示将出现误差）：
+
+### 字符串
+子字符串操作s[i:j] 基于原始的s字符串的第i个字节开始到第j个字节（并不包含j本身）生成一个新字符串
+```go
+s := "hello, world"
+fmt.Println(len(s)) // "12"
+fmt.Println(s[0])   // "104" ('h' 索引操作s[i]返回第i个字节的字节值)
+fmt.Println(s[0:5]) // "hello"
+fmt.Println(s[0:1]) // "h"
+```
+
+UTF8编码使用1到4个字节来表示每个Unicode码点
 
 ### type，自定义类型
 
@@ -156,34 +176,13 @@ type Employee struct {
 }
 ```
 
-### 整型
-有符号整形：int8、int16、int32、int64
-无符号整形：uint8、uint16、uint32、uint64
-var u uint8 = 255
-var i int8 = 127
-
-### 浮点数
-float32  和 float64 
-通常应该优先使用float64类型，因为float32类型的累计计算误差很容易扩散，并且float32能精确表示的正整数并不是很大（译注：因为float32的有效bit位只有23个，
-其它的bit位用于指数和符号；当整数大于23bit能表达的范围时，float32的表示将出现误差）：
-
-### 字符串
-子字符串操作s[i:j] 基于原始的s字符串的第i个字节开始到第j个字节（并不包含j本身）生成一个新字符串
-```go
-s := "hello, world"
-fmt.Println(len(s))     // "12"
-fmt.Println(s[0])   // "104" ('h' 索引操作s[i]返回第i个字节的字节值)
-fmt.Println(s[0:5]) // "hello"
-fmt.Println(s[0:1]) // "h"
-```
-
-UTF8编码使用1到4个字节来表示每个Unicode码点
-
 ### 数组
 数组是一个由固定长度的特定类型元素组成的序列，默认情况下，数组的每个元素都被初始化为元素类型对应的零值
+```go
 var a[3] int
 var q [3]int = [3]int{1, 2, 3} 初始化一个数组
 q := [...]int{1, 2, 3}   //在数组字面值中，如果在数组的长度位置出现的是“...”省略号，则表示数组的长度是根据初始化值的个数来计算
+```
 
 
 ### 切片 Slice
@@ -201,9 +200,7 @@ s :=[] int {1,2,3 }
 ```go
 /* 创建map */
 countryCapitalMap := map[string]string{"France": "Paris", "Italy": "Rome", "Japan": "Tokyo", "India": "New delhi"}
-```
 
-```go
 ages := make(map[string]int) // mapping from strings to ints
 ages := map[string]int{
     "alice":   31,
