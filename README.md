@@ -199,7 +199,7 @@ s :=[] int {1,2,3 }
 哈希表，它是一个无序的key/value对的集合，其中所有的key都是不同的，map中所有的key都有相同的类型，所有的value也有着相同的类型
 ```go
 /* 创建map */
-countryCapitalMap := map[string]string{"France": "Paris", "Italy": "Rome", "Japan": "Tokyo", "India": "New delhi"}
+countryCapitalMap := map[string]string{"France": "Paris", "Italy": "Rome"}
 
 ages := make(map[string]int) // mapping from strings to ints
 ages := map[string]int{
