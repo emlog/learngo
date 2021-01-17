@@ -2,15 +2,19 @@ package main
 
 import (
 	"fmt"
-	"strconv"
+
+	"github.com/gin-gonic/gin"
 )
 
+//main函数只能用于main包中，且只能定义一个。
 func main() {
-	fmt.Printf("Hello, world.\n")
+	r := gin.Default()
+	r.GET("/ping", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "pong",
+		})
+	})
 
-	//类型转换，int to string
-	a := 65
-	b := strconv.Itoa(a)
-	fmt.Printf("b is %s \n", b)
-
+	fmt.Println("starting web server")
+	r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }
