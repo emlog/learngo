@@ -1,0 +1,6 @@
+Database:
+  DBtype:Mysql
+  username
+  passwd
+  host
+  dbname
