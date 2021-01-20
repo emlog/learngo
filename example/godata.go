@@ -1,7 +1,7 @@
 /*
-数据示例
+代码示例：数据类型
 */
-package example
+package main
 
 import "fmt"
 
@@ -12,10 +12,10 @@ var balance = [5]float32{1000.0, 2.0, 3.4, 7.0, 50.0}
 //忽略长度的定义
 var balance2 = [...]string{"aaa", "bbb", "ccc"}
 
-//定义切片
+// 定义切片
 var slice1 []string
 
-//定义结构体
+// Books 定义结构体
 type Books struct {
 	title   string
 	author  string
@@ -23,7 +23,7 @@ type Books struct {
 	book_id int
 }
 
-func RunDataExample() {
+func main() {
 	//数组
 	animals := [3]string{"cat", "dog", "monkey"}
 	for i := 0; i <= 2; i++ {

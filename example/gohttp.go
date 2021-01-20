@@ -1,4 +1,7 @@
-package example
+/*
+代码示例：http调用
+*/
+package main
 
 import (
 	"fmt"

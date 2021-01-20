@@ -114,15 +114,40 @@ fmt.Println(p == q) // "false"
 
 ## 类型
 
-在大多数高级编程语言中，数据通常被抽象为各种类型（type）和值（value）。 一个类型可以看作是值的模板。一个值可以看作是某个类型的实例。 大多数编程语言支持自定义类型和若干预定义类型（即内置类型）。 一门语言的类型系统可以说是这门语言的灵魂。
-
-Go支持如下内置基本类型：
+在大多数高级编程语言中，数据通常被抽象为各种类型（type）和值（value）。 一个类型可以看作是值的模板。一个值可以看作是某个类型的实例。 Go支持如下内置基本类型：
 
 * 一种内置布尔类型：bool。
 * 11种内置整数类型：int8、uint8、int16、uint16、int32、uint32、int64、uint64、int、uint和uintptr。
 * 两种内置浮点数类型：float32和float64。
 * 两种内置复数类型：complex64和complex128。
 * 一种内置字符串类型：string。
+
+```go
+*T         // 一个指针类型
+[5]T       // 一个元素类型为T、元素个数为5的数组类型
+[]T        // 一个元素类型为T的切片类型
+map[Tkey]T // 一个键值类型为Tkey、元素类型为T的映射类型
+
+// 一个结构体类型
+struct {
+	name string
+	age  int
+}
+
+// 一个函数类型
+func(int) (bool, string)
+
+// 一个接口类型
+interface {
+	Method0(string) int
+	Method1() (int, bool)
+}
+
+// 几个通道类型
+chan T
+chan<- T
+<-chan T
+```
 
 Go也支持类型转换。 一个显式类型转换的形式为T(v)，其表示将一个值v转换为类型T。
 ```go
@@ -157,25 +182,29 @@ fmt.Println(s[0:1]) // "h"
 
 UTF8编码使用1到4个字节来表示每个Unicode码点
 
-### type，自定义类型
+### 自定义类型
+```go
+// 定义单个类型， type是关键词。
+type NewTypeName SourceType
 
-type Celsius float64    // 摄氏温度
-type Fahrenheit float64 // 华氏温度
-我们在这个包声明了两种类型：Celsius和Fahrenheit分别对应不同的温度单位。它们虽然有着相同的底层类型float64，但是它们是不同的数据类型，
-因此它们不可以被相互比较或混在一个表达式运算。刻意区分类型，可以避免一些像无意中使用不同单位的温度混合计算导致的错误。
+// 定义多个类型。
+type (
+	NewTypeName1 SourceType1
+	NewTypeName2 SourceType2
+)
 
 //类型等价定义，相当于类型重命名
-type name string
-name类型与string等价
+//Celsius和Fahrenheit分别对应不同的温度单位。它们虽然有着相同的底层类型float64，但是它们是不同的数据类型
+//刻意区分类型，可以避免一些像无意中使用不同单位的温度混合计算导致的错误
+type Celsius float64    // 摄氏温度
+type Fahrenheit float64 // 华氏温度
 
-自定义一个结构体类型：
-```go
-type Employee struct {
-    ID        int
-    Name      string
-    Address   string
-    DoB       time.Time
-}
+// 下面这些新定义的类型和它们的源类型都是组合类型。
+type IntPtr *int
+type Book struct{author, title string; pages int}
+type Convert func(in0 int, in1 bool)(out0 int, out1 string)
+type StringArray [5]string
+type StringSlice []string
 ```
 
 ### 数组
@@ -426,15 +455,3 @@ func main() {
 * https://books.studygolang.com/The-Golang-Standard-Library-by-Example/ 【GO标准库中文网：中文】
 * https://gorm.io/zh_CN/docs/index.html 【GORM 指南】
 * https://gfw.go101.org/article/101.html 【Go语言101 】
-
-
-
-
-
-
-
-
-
-
-
-

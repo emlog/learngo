@@ -1,12 +1,12 @@
 /*
-初始化
+代码示例：初始化
 */
-package example
+package main
 
 import "fmt"
 
 //int和int64运行的结果一样。int64是有符号 64 位整型，而在32位操作系统中int的大小也是32位（4字节）。
-var x int = 100
+var x int32 = 100
 var b1 *int
 var b2 []int
 var b3 map[string]int
@@ -28,6 +28,7 @@ const (
 	e
 )
 
+// main 初始化相关的例子
 func main() {
 	//println 是 builtin 包提供，语言内置，而 fmt.Println 来自标准库
 	// The println built-in function formats its arguments in an

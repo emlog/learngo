@@ -1,4 +1,7 @@
-package example
+/*
+代码示例：json数据处理
+*/
+package main
 
 import (
 	"encoding/json"

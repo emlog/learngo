@@ -1,7 +1,7 @@
 /*
-表达式示例：控制结构
+代码示例：表达式示例
 */
-package example
+package main
 
 import (
 	"fmt"
@@ -9,7 +9,7 @@ import (
 
 //var a = "hello world"
 
-func RunExample() {
+func main() {
 	fmt.Println("hello world!!")
 
 	//if

@@ -1,7 +1,7 @@
 /*
-函数示例
+代码示例：函数示例
 */
-package example
+package main
 
 import "fmt"
 
@@ -9,7 +9,7 @@ func swap(x, y string) (string, string) {
 	return y, x
 }
 
-func init() {
+func main() {
 	a, b := swap("Google", "Runoob")
 	fmt.Println(a, b)
 }
