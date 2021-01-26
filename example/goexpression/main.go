@@ -7,18 +7,18 @@ import (
 	"fmt"
 )
 
-//var a = "hello world"
+// var a = "hello world"
 
 func main() {
 	fmt.Println("hello world!!")
 
-	//if
+	// if
 	x := 5
 	if x > 0 {
 
 	}
 
-	//for: 遍历切片
+	// for: 遍历切片
 	s := []int{1, 2, 3}
 	for _, value := range s {
 		fmt.Printf("%d , %s ", value, "---")
