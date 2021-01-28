@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-//main函数只能用于main包中，且只能定义一个。
+// main函数只能用于main包中，且只能定义一个。
 func main() {
 	r := gin.Default()
 	r.GET("/ping", func(c *gin.Context) {

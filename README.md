@@ -21,6 +21,7 @@ export GO111MODULE=auto
 * GO111MODULE=off，go命令行将不会支持module功能，寻找依赖包的方式将会沿用旧版本那种通过vendor目录或者GOPATH模式来查找。
 * GO111MODULE=on，go命令行会使用modules，而一点也不会去GOPATH目录下查找。
 *
+
 GO111MODULE=auto，默认值，go命令行将会根据当前目录来决定是否启用module功能。这种情况下可以分为两种情形：1、当前目录在GOPATH/src之外且该目录包含go.mod文件，2、当前文件在包含go.mod文件的目录下面。
 
 ## 命名
@@ -417,16 +418,18 @@ p.Y *= factor
 }
 ```
 
-## 接口
+## interface 接口类型
 
 接口类型。一个接口类型定义了一个方法集，接口类型是一种抽象的类型。它不会暴露出它所代表的对象的内部值的结构和这个对象支持的基础操作的集合；它们只会表现出它们自己的方法。
 也就是说当你有看到一个接口类型的值时，你不知道它是什么，唯一知道的就是可以通过它的方法来做什么。
 
+go允许不带任何方法的 interface ，这种类型的 interface 叫 empty interface。
+
+如果一个类型实现了一个 interface 中所有方法，我们说类型实现了该 interface， 所以所有类型都实现了 empty interface，因为任何一种类型至少实现了 0 个方法。
+
 ```go
-    // ReadWriter是一个定义的接口类型。
-type ReadWriter interface {
-Read(buf []byte) (n int, err error)
-Write(buf []byte) (n int, err error)
+// 定义一个函数参数是 interface{} 类型，该函数可以接受任何类型作为它的参数。
+func doSomething(v interface{}){
 }
 ```
 
