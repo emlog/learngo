@@ -19,10 +19,8 @@ export GO111MODULE=auto
 ```
 
 * GO111MODULE=off，go命令行将不会支持module功能，寻找依赖包的方式将会沿用旧版本那种通过vendor目录或者GOPATH模式来查找。
-* GO111MODULE=on，go命令行会使用modules，而一点也不会去GOPATH目录下查找。
-*
-
-GO111MODULE=auto，默认值，go命令行将会根据当前目录来决定是否启用module功能。这种情况下可以分为两种情形：1、当前目录在GOPATH/src之外且该目录包含go.mod文件，2、当前文件在包含go.mod文件的目录下面。
+* GO111MODULE=on，go命令行会使用modules，不再去GOPATH目录下查找。
+* GO111MODULE=auto，默认值，go命令行将会根据当前目录来决定是否启用module功能。这种情况下可以分为两种情形：1、当前目录在GOPATH/src之外且该目录包含go.mod文件，2、当前文件在包含go.mod文件的目录下面。
 
 ## 命名
 
@@ -53,6 +51,7 @@ var {
 x, y int
 a, s = 100, "abc"
 }
+
 // 简短模式：只能在函数内部使用，简短变量声明被广泛用于大部分的局部变量的声明和初始化。
 func main() {
 x := 100
