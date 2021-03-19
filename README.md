@@ -1,12 +1,11 @@
 # Go语言示例和学习笔记
 
-## 内容目录
+这里包含了Go语言的学习笔记和一个完整可以运行的示例，方便快速了解go语言的基本语法和特性。
 
 Table of Contents
 =================
-
 * [Go语言示例和学习笔记](#go语言示例和学习笔记)
-    * [内容目录](#内容目录)
+* [Table of Contents](#table-of-contents)
     * [GO背景](#go背景)
     * [GO语言基础](#go语言基础)
         * [搭建golang开发环境](#搭建golang开发环境)
@@ -31,17 +30,16 @@ Table of Contents
         * [流程控制](#流程控制)
     * [函数](#函数)
         * [可变参数函数](#可变参数函数)
-    * [方法](#方法)
-    * [interface 接口类型](#interface-接口类型)
-    * [Goroutines](#goroutines)
-    * [通道（channel）](#通道channel)
+    * [面向对象](#面向对象)
+        * [方法](#方法)
+        * [interface 接口类型](#interface-接口类型)
+    * [并发编程](#并发编程)
+        * [通道（channel）](#通道channel)
     * [代码包](#代码包)
         * [init函数](#init函数)
         * [包引入](#包引入)
     * [工具](#工具)
-    * [参考文档](#参考文档)
-
-这里包含了Go语言的学习笔记和一个完整可以运行的示例，方便快速了解go语言的基本语法和特性。
+    * [参考文档和工具](#参考文档和工具)
 
 ## GO背景
 
@@ -434,7 +432,9 @@ test2(strss...) // 切片被打散传入
 }
 ```
 
-## 方法
+## 面向对象
+
+### 方法
 
 在函数声明时，在其名字之前放上一个变量，即是一个方法。
 
@@ -462,7 +462,7 @@ p.Y *= factor
 }
 ```
 
-## interface 接口类型
+### interface 接口类型
 
 接口类型。一个接口类型定义了一个方法集，接口类型是一种抽象的类型。它不会暴露出它所代表的对象的内部值的结构和这个对象支持的基础操作的集合；它们只会表现出它们自己的方法。
 也就是说当你有看到一个接口类型的值时，你不知道它是什么，唯一知道的就是可以通过它的方法来做什么。
@@ -477,14 +477,16 @@ func doSomething(v interface{}){
 }
 ```
 
-## Goroutines
+## 并发编程
+
+##@ Goroutines
 
 在Go语言中，每一个并发的执行单元叫作一个goroutine。当一个程序启动时，其主函数即在一个单独的goroutine中运行，我们叫它main goroutine。
 新的goroutine会用go语句来创建。在语法上，go语句是一个普通的函数或方法调用前加上关键字go。go语句会使其语句中的函数在一个新创建的goroutine中运行。而go语句本身会迅速地完成。
 
 goroutine很像线程，但是它占用的内存远少于线程，使用它需要的代码更少。通道（channel）是一种内置的数据结构，可以让用户在不同的goroutine之间同步发送具有类型的消息。这让编程模型更倾向于在goroutine之间发送消息，而不是让多个goroutine争夺同一个数据的使用权。
 
-## 通道（channel）
+### 通道（channel）
 
 通道（channel）是用来传递数据的一个数据结构。使用内置的make函数，我们可以创建一个channel：
 
@@ -536,14 +538,14 @@ func main() {
 
 ## 工具
 
-* 测试框架：单元测试、性能测试、代码覆盖率、PPROF
 * gofmt 保存的时候自动 格式化go代码
 * goimports 保存的时候自动导入处理包 (需要先安装: go get golang.org/x/tools/cmd/goimports)
 * gometalinter 保存的时候自动检查go语法
 
-## 参考文档
+## 参考文档和工具
 
 * https://golang.org/pkg/ 【GO标准库中文网：英文】
 * https://books.studygolang.com/The-Golang-Standard-Library-by-Example/ 【GO标准库中文网：中文】
 * https://gorm.io/zh_CN/docs/index.html 【GORM 指南】
 * https://gfw.go101.org/article/101.html 【Go语言101 】
+* github-markdown-toc 用于生成该文档的目录，#gh-md-toc /readme.md
