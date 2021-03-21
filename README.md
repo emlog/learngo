@@ -89,14 +89,14 @@ var y = false
 var x, y int
 var a, s = 100, "abc"
 var {
-x, y int
-a, s = 100, "abc"
+    x, y int
+    a, s = 100, "abc"
 }
 
 // 简短模式：只能在函数内部使用，简短变量声明被广泛用于大部分的局部变量的声明和初始化。
 func main() {
-x := 100
-a, s := 1, "abc"
+    x := 100
+    a, s := 1, "abc"
 }
 ```
 
@@ -114,8 +114,8 @@ a, s := 1, "abc"
 const s = "hello world"
 const x, y int = 123, 0x22
 const (
-i, f = 1, 0.123
-b = false
+    i, f = 1, 0.123
+    b = false
 )
 ```
 
@@ -124,18 +124,16 @@ iota，特殊常量，可以认为是一个可以被编译器修改的常量。 
 
 ```go
 const (
-a = iota // 0
-b        // 1
-c        // 2
-d = "ha" // 独立值，iota += 1
-e        // "ha"   iota += 1
-f = 100  // iota +=1
-g          // 100  iota +=1
-h = iota   // 7,恢复计数
-i          // 8
+    a = iota    // 0
+    b           // 1
+    c           // 2
+    d = "ha"    // 独立值，iota += 1
+    e           // "ha"   iota += 1
+    f = 100     // iota +=1
+    g           // 100  iota +=1
+    h = iota    // 7,恢复计数
+    i           // 8
 )
-fmt.Println(a, b, c, d, e, f, g, h, i)
-// 运行结果：0 1 2 ha ha 100 100 7 8
 ```
 
 ### 指针
@@ -199,7 +197,7 @@ chan<- T
 <-chan T
 ```
 
-Go也支持类型转换。 一个显式类型转换的形式为T(v)，其表示将一个值v转换为类型T。
+Go不支持隐式类型转换，仅支持显式类型转换，形式为T(v)，其表示将一个值v转换为类型T。
 
 ```go
 uint(1.0)
@@ -245,8 +243,8 @@ type NewTypeName SourceType
 
 // 定义多个类型。
 type (
-NewTypeName1 SourceType1
-NewTypeName2 SourceType2
+    NewTypeName1 SourceType1
+    NewTypeName2 SourceType2
 )
 
 // 类型等价定义，相当于类型重命名
@@ -283,7 +281,8 @@ Slice（切片）代表变长的序列，序列中每个元素都有相同的类
 // 定义切片变量
 var identifier []type
 // 初始化切片
-s := [] int {1, 2, 3 } 
+s := []int{1, 2, 3 } 
+s1 := make([]int, 3, 5) //类型是int，长度len=3，容量cap=5
 ```
 
 ### Map
@@ -296,8 +295,8 @@ countryCapitalMap := map[string]string{"France": "Paris", "Italy": "Rome"}
 
 ages := make(map[string]int) // mapping from strings to ints
 ages := map[string]int{
-"alice":   31,
-"charlie": 34,
+    "alice":   31,
+    "charlie": 34,
 }
 ages["alice"] = 32
 fmt.Println(ages["alice"]) // "32"
@@ -309,24 +308,24 @@ fmt.Println(ages["alice"]) // "32"
 
 ```go
 type Employee struct {
-ID        int
-Name      string
-Address   string
-DoB       time.Time
+    ID        int
+    Name      string
+    Address   string
+    DoB       time.Time
 }
 
 type Point struct {
-X, Y int
+    X, Y int
 }
 
 type Circle struct {
-Center Point
-Radius int
+    Center Point
+    Radius int
 }
 
 type Wheel struct {
-Circle Circle
-Spokes int
+    Circle Circle
+    Spokes int
 }
 
 var w Wheel
@@ -366,35 +365,29 @@ Go语言中有三种基本的流程控制代码块：
 * switch-case多条件分支代码块。
 
 ```go
-// InitSimpleStatement部分是可选的,Condition必须为一个结果为布尔值的表达式
-if InitSimpleStatement; Condition {
-// do something
-} else {
-// do something
+
+for {
+	//无限循环
 }
 
-// 在每个循环步的结尾，步尾语句（PostSimpleStatement）将被执行
-for InitSimpleStatement; Condition; PostSimpleStatement {
-// do something
-}
 for i := 0; i < 10; i++ {
-fmt.Println(i)
+    fmt.Println(i)
 }
 
 // switch InitSimpleStatement; CompareOperand
 switch n := rand.Intn(100); n%9 {
-case 0:
-fmt.Println(n, "is a multiple of 9.")
-fallthrough // 跳到下个代码块,一条fallthrough语句必须为一个分支代码块中的最后一条语句
-case 1, 2, 3:
-fmt.Println(n, "mod 9 is 1, 2 or 3.")
-break // 这里的break语句可有可无的，效果是一样的。执行不会跳到下一个分支。
-case 4, 5, 6:
-fmt.Println(n, "mod 9 is 4, 5 or 6.")
-default:
-fmt.Println(n, "mod 9 is 7 or 8.")
-fallthrough // error: 不能出现在最后一个分支中
-}
+    case 0:
+        fmt.Println(n, "is a multiple of 9.")
+        fallthrough // 跳到下个代码块,一条fallthrough语句必须为一个分支代码块中的最后一条语句
+    case 1, 2, 3:
+        fmt.Println(n, "mod 9 is 1, 2 or 3.")
+        break // 这里的break语句可有可无
+    case 4, 5, 6:
+        fmt.Println(n, "mod 9 is 4, 5 or 6.")
+    default:
+        fmt.Println(n, "mod 9 is 7 or 8.")
+        fallthrough // error: 不能出现在最后一个分支中
+    }
 }
 
 ```
@@ -405,7 +398,7 @@ fallthrough // error: 不能出现在最后一个分支中
 
 ```go
 func name(parameter-list) (result-list) {
-body
+    body
 }
 ```
 
@@ -416,18 +409,19 @@ body
 ```go
 // 用法1：用于函数有多个不定参数的情况，可以接受多个不确定数量的参数。
 func test2(args ...string) { // 可变参数函数，可以接受任意个string参数
-for _, v := range args{
-fmt.Println(v)
-}
+    for _, v := range args{
+        fmt.Println(v)
+    }
 }
 // 用法2：slice可以被打散进行传递。
 func main(){
-var strss = []string{
-"blue",
-"red",
-"black",
-"yellow",
+    var strss = []string{
+    "blue",
+    "red",
+    "black",
+    "yellow",
 }
+    
 test2(strss...) // 切片被打散传入
 }
 ```
@@ -442,7 +436,7 @@ test2(strss...) // 切片被打散传入
 type Point struct{ X, Y float64 }
 
 func (p Point) Distance(q Point) float64 {
-return math.Hypot(q.X-p.X, q.Y-p.Y)
+    return math.Hypot(q.X-p.X, q.Y-p.Y)
 }
 // 上面的代码里那个附加的参数p，叫做方法的接收器（receiver）
 
@@ -457,8 +451,8 @@ fmt.Println(p.Distance(q)) // "5", method call
 
 ```go
 func (p *Point) ScaleBy(factor float64) {
-p.X *= factor
-p.Y *= factor
+    p.X *= factor
+    p.Y *= factor
 }
 ```
 
@@ -494,8 +488,8 @@ goroutine很像线程，但是它占用的内存远少于线程，使用它需�
 c := make(chan int) // 分配一个通道
 // 在Go程中启动排序。当它完成后，在通道上发送信号。
 go func () {
-list.Sort()
-c <- 1 // 发送信号，什么值无所谓。
+    list.Sort()
+    c <- 1 // 发送信号，什么值无所谓。
 }()
 doSomethingForAWhile()
 <-c // 等待排序结束，丢弃发来的值。
@@ -537,15 +531,15 @@ func main() {
 ```
 
 ## 工具
-
 * gofmt 保存的时候自动 格式化go代码
 * goimports 保存的时候自动导入处理包 (需要先安装: go get golang.org/x/tools/cmd/goimports)
 * gometalinter 保存的时候自动检查go语法
 
-## 参考文档和工具
+## 参考文档
 
 * https://golang.org/pkg/ 【GO标准库中文网：英文】
 * https://books.studygolang.com/The-Golang-Standard-Library-by-Example/ 【GO标准库中文网：中文】
 * https://gorm.io/zh_CN/docs/index.html 【GORM 指南】
 * https://gfw.go101.org/article/101.html 【Go语言101 】
 * github-markdown-toc 用于生成该文档的目录，#gh-md-toc /readme.md
+
