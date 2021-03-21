@@ -2,6 +2,7 @@ package array_test
 
 import "testing"
 
+// 数组初始化 init array
 func TestArrayInt(t *testing.T) {
 	var arr [3]int
 	arr1 := [3]int{1, 2, 3}
@@ -10,6 +11,7 @@ func TestArrayInt(t *testing.T) {
 	t.Log(arr1, arr2)
 }
 
+// 数组便利 array travel
 func TestArrayTravel(t *testing.T) {
 	arr3 := [...]int{3, 4, 6, 7, 8}
 
@@ -22,6 +24,7 @@ func TestArrayTravel(t *testing.T) {
 	}
 }
 
+// 截取数组中的第一段
 func TestArraySection(t *testing.T) {
 	arr3 := [...]int{3, 4, 6, 7, 8}
 	arr_sec1 := arr3[3:]
