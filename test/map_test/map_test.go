@@ -41,3 +41,33 @@ func TestTravelMap(t *testing.T) {
 		t.Log(k, v)
 	}
 }
+
+// 函索作为map的值
+func TestMapWtihFunValue(t *testing.T) {
+	m := map[int]func(op int) int{}
+	m[1] = func(op int) int { return op }
+	m[2] = func(op int) int { return op * op }
+	m[3] = func(op int) int { return op * op * op }
+	t.Log(m[1](2), m[2](2), m[3](2))
+}
+
+// 用map实现集合set
+func TestMapForSet(t *testing.T) {
+	mySet := map[int]bool{}
+	mySet[1] = true
+	n := 3
+
+	// 判断集合中是否存在某值
+	if mySet[n] {
+		t.Logf("%d is existing", n)
+	} else {
+		t.Logf("%d is not existing", n)
+	}
+
+	// 集合长度
+	t.Log(len(mySet))
+
+	// 删除一个key
+	delete(mySet, 1)
+
+}
