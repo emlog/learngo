@@ -19,6 +19,6 @@ func TestConstantTry(t *testing.T) {
 }
 
 func TestConstantTry1(t *testing.T) {
-	a := 1 //0001
+	a := 1 // 0001
 	t.Log(a&Readable == Readable, a&Writable == Writable, a&Executable == Executable)
 }

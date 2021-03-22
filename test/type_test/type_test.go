@@ -16,14 +16,14 @@ func TestImplicit(t *testing.T) {
 func TestPoint(t *testing.T) {
 	a := 1
 	aPtr := &a
-	//aPtr = aPtr + 1
+	// aPtr = aPtr + 1
 	t.Log(a, aPtr)
 	t.Logf("%T %T", a, aPtr)
 }
 
 func TestString(t *testing.T) {
 	var s string
-	t.Log("*" + s + "*") //初始化零值是“”
+	t.Log("*" + s + "*") // 初始化零值是“”
 	t.Log(len(s))
 
 }

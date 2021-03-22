@@ -5,11 +5,9 @@ import (
 )
 
 // 初始化切片
-// len 长度
-// cap 容量
 func TestSliceInit(t *testing.T) {
 	var s0 []int
-	t.Log(len(s0), cap(s0))
+	t.Log(len(s0), cap(s0)) // 打印切片长度len、容量cap
 	s0 = append(s0, 1)
 	t.Log(len(s0), cap(s0))
 
@@ -18,7 +16,7 @@ func TestSliceInit(t *testing.T) {
 
 	s2 := make([]int, 3, 5)
 	t.Log(len(s2), cap(s2))
-	//t.Log(s2[1], s2[4])
+	// t.Log(s2[1], s2[4])
 
 	s2 = append(s2, 1)
 	t.Log(s2[1], s2[3])
@@ -37,7 +35,7 @@ func TestSliceGrowing(t *testing.T) {
 func TestSliceShareMemory(t *testing.T) {
 	year := []string{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"}
 	Q2 := year[3:6]
-	t.Log(Q2, len(Q2), cap(Q2)) //[Apr May Jun] 3 9
+	t.Log(Q2, len(Q2), cap(Q2)) // [Apr May Jun] 3 9
 	summer := year[5:8]
 	t.Log(summer, len(summer), cap(summer))
 	summer[0] = "unKonw"
@@ -46,14 +44,15 @@ func TestSliceShareMemory(t *testing.T) {
 	t.Log(year)
 }
 
+// 切片比较
 func TestSliceComparing(t *testing.T) {
 	a := []int{1, 3, 5}
-	//b := []int{1, 3, 5}
+	// b := []int{1, 3, 5}
 
-	//slice can only be compared to nil
-	//if a == b {
+	// slice can only be compared to nil
+	// if a == b {
 	//	t.Log("equal")
-	//}
+	// }
 
 	if a == nil {
 		t.Log("equal")
