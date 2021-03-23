@@ -223,17 +223,9 @@ float32 和 float64 通常应该优先使用float64类型，因为float32类型�
 
 ### 字符串
 
-子字符串操作s[i:j] 基于原始的s字符串的第i个字节开始到第j个字节（并不包含j本身）生成一个新字符串
-
-```go
-s := "hello, world"
-fmt.Println(len(s)) // "12"
-fmt.Println(s[0]) // "104" ('h' 索引操作s[i]返回第i个字节的字节值)
-fmt.Println(s[0:5]) // "hello"
-fmt.Println(s[0:1]) // "h"
-```
-
-UTF8编码使用1到4个字节来表示每个Unicode码点
+* string是数据类型，不是引用或者指针类型
+* string是只读的byte slice，len可以获取它包含的byte数
+* Unicode是一种字符集（code point） ，UTF8是Unicode的一种存储实现看，UTF8编码使用1到4个字节来表示每个Unicode point
 
 ### 自定义类型
 
@@ -269,7 +261,7 @@ type StringSlice []string
 
 ```go
 var a[3] int
-var q [3]int = [3]int{1, 2, 3} 初始化一个数组
+var q [3]int = [3]int{1, 2, 3} // 初始化一个数组
 q := [...]int{1, 2, 3} // “...”省略号表示数组的长度是根据初始化值的个数来计算
 ```
 
@@ -278,8 +270,6 @@ q := [...]int{1, 2, 3} // “...”省略号表示数组的长度是根据初始
 Slice（切片）代表变长的序列，序列中每个元素都有相同的类型。一个slice类型一般写作[]T，其中T代表slice中元素的类型；slice的语法和数组很像，只是没有固定长度而已 内置的append函数用于向slice追加元素
 
 ```go
-// 定义切片变量
-var identifier []type
 // 初始化切片
 s := []int{1, 2, 3 } 
 s1 := make([]int, 3, 5) //类型是int，长度len=3，容量cap=5
@@ -287,7 +277,7 @@ s1 := make([]int, 3, 5) //类型是int，长度len=3，容量cap=5
 
 ### Map
 
-哈希表，它是一个无序的key/value对的集合，其中所有的key都是不同的，map中所有的key都有相同的类型，所有的value也有着相同的类型
+Map哈希表，它是一个无序的key/value对的集合，其中所有的key都是不同的，map中所有的key都有相同的类型，所有的value也有着相同的类型
 
 ```go
 /* 创建map */
