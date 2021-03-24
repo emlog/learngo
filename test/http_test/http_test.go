@@ -1,12 +1,10 @@
-/*
-代码示例：http调用
-*/
-package main
+package http_test
 
 import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"testing"
 )
 
 func httpGet() {
@@ -21,6 +19,6 @@ func httpGet() {
 	fmt.Printf("status code: %d", resp.StatusCode)
 }
 
-func main() {
+func TestHttp(t *testing.T) {
 	httpGet()
 }

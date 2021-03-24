@@ -1,11 +1,9 @@
-/*
-代码示例：json数据处理
-*/
-package main
+package json_test
 
 import (
 	"encoding/json"
 	"fmt"
+	"testing"
 )
 
 type userInfo struct {
@@ -14,7 +12,7 @@ type userInfo struct {
 	sex  string `json:"sex"` // 小写字母开头，不可以被转为json
 }
 
-func main() {
+func TestJson(t *testing.T) {
 
 	// 结构体转json数据
 	m := userInfo{"snow", 10, "boy"}

@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-// 初始化切片
+// 初始化切片 slice
 func TestSliceInit(t *testing.T) {
 	var s0 []int
 	t.Log(len(s0), cap(s0)) // 打印切片长度len、容量cap
