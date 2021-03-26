@@ -382,6 +382,23 @@ switch n := rand.Intn(100); n%9 {
 
 ```
 
+## 错误处理
+
+* go语言没有异常机制
+* error类型实现了error接口
+* 可以通过 error.new来快速创建错误实例
+* 及早失败，避免嵌套
+
+```go
+type error interface (
+    Error() string
+)
+
+Errors.new("this is an error")
+
+```
+
+
 ## 函数
 
 函数声明包括函数名、形式参数列表、返回值列表（可省略）以及函数体。
@@ -483,7 +500,7 @@ doSomethingForAWhile()
 <-c // 等待排序结束，丢弃发来的值。
 ```
 
-## 代码包
+## 包和依赖管理
 
 ### init函数
 
