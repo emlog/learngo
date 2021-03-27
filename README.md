@@ -389,6 +389,9 @@ switch n := rand.Intn(100); n%9 {
 * 可以通过 error.new来快速创建错误实例
 * 及早失败，避免嵌套
 
+* panic 用于不可恢复的错误
+* panic 推出前会执行defer指定的内容
+
 ```go
 type error interface (
     Error() string
@@ -476,31 +479,12 @@ func doSomething(v interface{}){
 }
 ```
 
-## 并发编程
-
-##@ Goroutines
-
-在Go语言中，每一个并发的执行单元叫作一个goroutine。当一个程序启动时，其主函数即在一个单独的goroutine中运行，我们叫它main goroutine。
-新的goroutine会用go语句来创建。在语法上，go语句是一个普通的函数或方法调用前加上关键字go。go语句会使其语句中的函数在一个新创建的goroutine中运行。而go语句本身会迅速地完成。
-
-goroutine很像线程，但是它占用的内存远少于线程，使用它需要的代码更少。通道（channel）是一种内置的数据结构，可以让用户在不同的goroutine之间同步发送具有类型的消息。这让编程模型更倾向于在goroutine之间发送消息，而不是让多个goroutine争夺同一个数据的使用权。
-
-### 通道（channel）
-
-通道（channel）是用来传递数据的一个数据结构。使用内置的make函数，我们可以创建一个channel：
-
-```go
-c := make(chan int) // 分配一个通道
-// 在Go程中启动排序。当它完成后，在通道上发送信号。
-go func () {
-    list.Sort()
-    c <- 1 // 发送信号，什么值无所谓。
-}()
-doSomethingForAWhile()
-<-c // 等待排序结束，丢弃发来的值。
-```
 
 ## 包和依赖管理
+
+* 基本复用模块单元，首字母大写来表明可被外部代码访问
+* 代码的package 可以和所在的目录不同
+* 同一目录里的go代码的package要保持一致
 
 ### init函数
 
@@ -534,6 +518,31 @@ func main() {
 	... // 并没有使用匿名引入的pprof包
 }
 ```
+
+## 并发编程
+
+##@ Goroutines
+
+在Go语言中，每一个并发的执行单元叫作一个goroutine。当一个程序启动时，其主函数即在一个单独的goroutine中运行，我们叫它main goroutine。
+新的goroutine会用go语句来创建。在语法上，go语句是一个普通的函数或方法调用前加上关键字go。go语句会使其语句中的函数在一个新创建的goroutine中运行。而go语句本身会迅速地完成。
+
+goroutine很像线程，但是它占用的内存远少于线程，使用它需要的代码更少。通道（channel）是一种内置的数据结构，可以让用户在不同的goroutine之间同步发送具有类型的消息。这让编程模型更倾向于在goroutine之间发送消息，而不是让多个goroutine争夺同一个数据的使用权。
+
+### 通道（channel）
+
+通道（channel）是用来传递数据的一个数据结构。使用内置的make函数，我们可以创建一个channel：
+
+```go
+c := make(chan int) // 分配一个通道
+// 在Go程中启动排序。当它完成后，在通道上发送信号。
+go func () {
+    list.Sort()
+    c <- 1 // 发送信号，什么值无所谓。
+}()
+doSomethingForAWhile()
+<-c // 等待排序结束，丢弃发来的值。
+```
+
 
 ## 工具
 * gofmt 保存的时候自动 格式化go代码
