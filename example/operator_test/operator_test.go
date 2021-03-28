@@ -1,3 +1,4 @@
+// 其他
 package operator_test
 
 import "testing"
@@ -8,6 +9,7 @@ const (
 	Executable
 )
 
+// 数组的比较
 func TestCompareArray(t *testing.T) {
 	a := [...]int{1, 2, 3, 4}
 	b := [...]int{1, 3, 2, 4}
@@ -18,6 +20,7 @@ func TestCompareArray(t *testing.T) {
 	t.Log(a == d)
 }
 
+// 按位操作
 func TestBitClear(t *testing.T) {
 	a := 7 // 0111
 	a = a &^ Readable

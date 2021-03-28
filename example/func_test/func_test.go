@@ -1,4 +1,5 @@
-package fn_test
+// 函数的使用
+package func_test
 
 import (
 	"fmt"
@@ -45,14 +46,4 @@ func Sum(ops ...int) int {
 func TestVarParam(t *testing.T) {
 	t.Log(Sum(1, 2, 3, 4))
 	t.Log(Sum(1, 2, 3, 4, 5))
-}
-
-func Clear() {
-	fmt.Println("Clear resources.")
-}
-
-func TestDefer(t *testing.T) {
-	defer Clear()
-	fmt.Println("Start")
-	panic("err")
 }

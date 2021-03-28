@@ -1,3 +1,4 @@
+// 数组的使用
 package array_test
 
 import "testing"

@@ -1,3 +1,4 @@
+// 错误error处理机制
 package error_test
 
 import (

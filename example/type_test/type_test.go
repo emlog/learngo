@@ -1,3 +1,4 @@
+// 数据类型的使用和定义
 package type_test
 
 import "testing"
