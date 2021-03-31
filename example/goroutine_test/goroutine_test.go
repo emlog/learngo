@@ -1,4 +1,4 @@
-package groutine_test
+package goroutine_test
 
 import (
 	"fmt"

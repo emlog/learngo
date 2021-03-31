@@ -1,5 +1,5 @@
-// 单例模式，在多线程环境下某一块代码只执行一次
-package groutine_test
+// 并发模式：只运行一次，（单例模式，在多线程环境下某一块代码只执行一次）
+package goroutine_test
 
 import (
 	"fmt"
