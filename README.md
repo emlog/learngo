@@ -2,10 +2,29 @@
 
 这里包含了Go语言的学习笔记和一个完整可以运行的示例，方便快速了解go语言的基本语法和特性。
 
-Table of Contents
+
+# 项目目录说明
+* configs 配置文件
+* docs 文档
+* example 演示代码示例（和项目无关，采用单元测试的方式）
+* global 全局变量
+* internal 内部模块
+    * dao 数据访问层（database access object）所有数据相关操作都在dao层，包括MySQL，ES等
+    * middleware HTTP中间件
+    * model 模型层，用于存放model对象
+    * routers 路由相关
+    * service 项目核心业务逻辑
+* pkg 项目相关的模块包
+* script 各类构建、安装、分析等操作的脚本
+* storage 项目生成的临时文件
+* third_party 第三方资源工具，如 Swagger UI
+* vendor 项目依赖库，go mod vendor 自动生成
+
+
+# GO语言基础
 =================
 * [Go语言示例和学习笔记](#go语言示例和学习笔记)
-* [Table of Contents](#table-of-contents)
+* [内容目录](#内容目录)
     * [GO背景](#go背景)
     * [GO语言基础](#go语言基础)
         * [搭建golang开发环境](#搭建golang开发环境)
@@ -28,18 +47,19 @@ Table of Contents
         * [json](#json)
     * [表达式和流程控制](#表达式和流程控制)
         * [流程控制](#流程控制)
+    * [错误处理](#错误处理)
     * [函数](#函数)
         * [可变参数函数](#可变参数函数)
     * [面向对象](#面向对象)
         * [方法](#方法)
         * [interface 接口类型](#interface-接口类型)
-    * [并发编程](#并发编程)
-        * [通道（channel）](#通道channel)
-    * [代码包](#代码包)
+    * [包和依赖管理](#包和依赖管理)
         * [init函数](#init函数)
         * [包引入](#包引入)
+    * [并发编程](#并发编程)
+        * [通道（channel）](#通道channel)
     * [工具](#工具)
-    * [参考文档和工具](#参考文档和工具)
+    * [参考文档](#参考文档)
 
 ## GO背景
 
