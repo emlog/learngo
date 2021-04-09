@@ -1,10 +1,11 @@
+// 切片（slice）的使用
 package slice_test
 
 import (
 	"testing"
 )
 
-// 初始化切片 slice
+// 初始化切片
 func TestSliceInit(t *testing.T) {
 	var s0 []int
 	t.Log(len(s0), cap(s0)) // 打印切片长度len、容量cap
@@ -47,8 +48,8 @@ func TestSliceShareMemory(t *testing.T) {
 // 切片比较
 func TestSliceComparing(t *testing.T) {
 	a := []int{1, 3, 5}
-	// b := []int{1, 3, 5}
 
+	// b := []int{1, 3, 5}
 	// slice can only be compared to nil
 	// if a == b {
 	//	t.Log("equal")
