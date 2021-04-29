@@ -9,8 +9,8 @@ import (
 
 func TestString(t *testing.T) {
 	var s string
-	t.Log(s) // 初始化为默认零值“”
-	s = "hello"
+	t.Log(s)    // 初始化为默认零值“”
+	s = "hello" // 在Go中，双引号是用来表示字符串string，其实质是一个byte类型的数组，单引号表示rune类型(int32)
 	t.Log(len(s))
 	// s[1] = '3' //string是不可变的byte slice
 	// s = "\xE4\xB8\xA5" //可以存储任何二进制数据
