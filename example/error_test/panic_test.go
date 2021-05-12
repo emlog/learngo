@@ -1,4 +1,6 @@
-// panic处理机制
+/*
+panic处理机制
+*/
 package error_test
 
 import (

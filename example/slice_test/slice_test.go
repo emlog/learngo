@@ -1,4 +1,6 @@
-// 切片（slice）的使用
+/*
+切片（slice）的使用
+*/
 package slice_test
 
 import (

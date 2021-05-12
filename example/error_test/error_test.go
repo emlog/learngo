@@ -1,4 +1,6 @@
-// 错误error处理机制
+/*
+错误error处理机制
+*/
 package error_test
 
 import (
@@ -76,5 +78,4 @@ func GetFibonacci2(str string) {
 		return
 	}
 	fmt.Println(list)
-
 }

@@ -1,3 +1,6 @@
+/*
+性能测试
+*/
 package benchmark_test
 
 import (

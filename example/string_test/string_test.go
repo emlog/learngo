@@ -1,7 +1,10 @@
-// 字符串的使用
+/*
+字符串的使用
+*/
 package string_test
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 	"testing"
@@ -56,4 +59,34 @@ func TestConv(t *testing.T) {
 	} else {
 		t.Log("can not conv")
 	}
+}
+
+func TestInt2Str(t *testing.T) {
+	var uid int
+	uid = 123456
+
+	// 数值类型和 string 类型之间的相互转换可能造成值部分丢失
+	// uidstring := string(uid)
+
+	// string 和数字之间的转换可使用标准库 strconv
+	uidstring := strconv.Itoa(uid)
+
+	t.Logf("uid: %s", uidstring)
+
+}
+
+func TestBenchmarkOk(t *testing.T) {
+	var str = "1"
+	var number int = 2
+	fmt.Println("原字符串：", str)
+	fmt.Println("原数字：", number)
+	// 字符串转数字
+	num, _ := strconv.Atoi(str)
+	fmt.Println("字符串转数字：", num)
+	// 数字转字符串
+	str1 := strconv.Itoa(num)
+	fmt.Println("数字转字符串：", str1)
+	// 数字转数字
+	var numTrans = int64(number)
+	fmt.Println("数字转数字：", numTrans)
 }

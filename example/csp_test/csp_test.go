@@ -1,4 +1,6 @@
-// CSP 并发机制的使用。
+/*
+CSP 并发机制的使用。
+*/
 package concurrency
 
 import (

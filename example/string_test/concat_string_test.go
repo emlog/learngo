@@ -1,4 +1,6 @@
-// 字符串连接性能测试。
+/*
+字符串连接性能测试。
+*/
 package string_test
 
 import (
