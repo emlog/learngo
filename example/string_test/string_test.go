@@ -63,7 +63,15 @@ func TestConv(t *testing.T) {
 
 func TestInt2Str(t *testing.T) {
 	var uid int
+	var uid2 int64
+	var uid3 int
+
+	// int 和 int64的强制转换
 	uid = 123456
+	uid2 = int64(uid)
+	uid3 = int(uid2)
+	t.Logf("uid2: %d", uid2)
+	t.Logf("uid3: %d", uid3)
 
 	// 数值类型和 string 类型之间的相互转换可能造成值部分丢失
 	// uidstring := string(uid)
