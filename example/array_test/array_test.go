@@ -11,6 +11,9 @@ func TestArrayInt(t *testing.T) {
 	arr3 := [2]string{"snow", "sun"}
 	t.Log(arr[1], arr[2])
 	t.Log(arr1, arr2, arr3)
+
+	var arr22 = [3]int{1, 2, 3}
+	t.Logf("arr22: %d", arr22[1])
 }
 
 // 数组遍历

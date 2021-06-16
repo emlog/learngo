@@ -98,3 +98,9 @@ func TestBenchmarkOk(t *testing.T) {
 	var numTrans = int64(number)
 	fmt.Println("数字转数字：", numTrans)
 }
+
+// 去除字符串开头结尾的字符。
+func TestStringTrim(t *testing.T) {
+	t.Log(strings.Trim("¡¡¡Hello, Gophers!!!", "!¡"))
+	t.Log(strings.Trim("\n\nHello, Gophers \t\n", "\n\t "))
+}
