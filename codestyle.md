@@ -295,4 +295,394 @@ var ErrFormat = errors.New("unknown format")
 
 3. 注释规范
    
-每个可导出的名字都要有注释，该注释对导出的变量、函数、结构体、接口等进行简要介绍。全部使用单行注释，禁止使用多行注释。和代码的规范一样，单行注释不要过长，禁止超过 120 字符，超过的请使用换行展示，尽量保持格式优雅。注释必须是完整的句子，以需要注释的内容作为开头，句点作为结尾，格式为 // 名称 描述. 。例如：
+每个可导出的名字都要有注释，该注释对导出的变量、函数、结构体、接口等进行简要介绍。
+全部使用单行注释，禁止使用多行注释。
+和代码的规范一样，单行注释不要过长，禁止超过 120 字符，超过的请使用换行展示，尽量保持格式优雅。
+注释必须是完整的句子，以需要注释的内容作为开头，句点作为结尾，格式为 // 名称 描述. 。
+
+例如：
+
+```go
+
+// bad
+// logs the flags in the flagset.
+func PrintFlags(flags *pflag.FlagSet) {
+  // normal code
+}
+
+// good
+// PrintFlags logs the flags in the flagset.
+func PrintFlags(flags *pflag.FlagSet) {
+  // normal code
+}
+
+```
+
+所有注释掉的代码在提交 code review 前都应该被删除，否则应该说明为什么不删除，并给出后续处理建议。
+
+在多段注释之间可以使用空行分隔加以区分，如下所示：
+
+```go
+
+// Package superman implements methods for saving the world.
+//
+// Experience has shown that a small number of procedures can prove
+// helpful when attempting to save the world.
+package superman
+```
+
+3.1 包注释
+
+每个包都有且仅有一个包级别的注释。包注释统一用 // 进行注释，格式为 // Package 包名 包描述 ，例如：
+
+```go
+
+// Package genericclioptions contains flags which can be added to you command, bound, completed, and produce
+// useful helper functions.
+package genericclioptions
+```
+
+3.2 变量 / 常量注释
+
+每个可导出的变量 / 常量都必须有注释说明，格式为// 变量名 变量描述，例如：
+
+```go
+
+// ErrSigningMethod defines invalid signing method error.
+var ErrSigningMethod = errors.New("Invalid signing method")
+```
+
+3.3 结构体注释
+
+每个需要导出的结构体或者接口都必须有注释说明，格式为 // 结构体名 结构体描述.。
+结构体内的可导出成员变量名，如果意义不明确，必须要给出注释，放在成员变量的前一行或同一行的末尾。例如：
+
+```go
+
+// User represents a user restful resource. It is also used as gorm model.
+type User struct {
+    // Standard object's metadata.
+    metav1.ObjectMeta `json:"metadata,omitempty"`
+
+    Nickname string `json:"nickname" gorm:"column:nickname"`
+    Password string `json:"password" gorm:"column:password"`
+    Email    string `json:"email" gorm:"column:email"`
+    Phone    string `json:"phone" gorm:"column:phone"`
+    IsAdmin  int    `json:"isAdmin,omitempty" gorm:"column:isAdmin"`
+}
+```
+
+3.4 方法注释每个需要导出的函数或者方法都必须有注释，格式为// 函数名 函数描述.，例如：
+
+```go
+
+// BeforeUpdate run before update database record.
+func (p *Policy) BeforeUpdate() (err error) {
+  // normal code
+  return nil
+}
+```
+
+3.5 类型注释
+
+每个需要导出的类型定义和类型别名都必须有注释说明，格式为 // 类型名 类型描述. ，例如：
+
+```go
+
+// Code defines an error code type.
+type Code int
+```
+
+
+4 类型
+
+4.1 
+
+字符串空字符串判断。
+
+```go
+
+// bad
+if s == "" {
+    // normal code
+}
+
+// good
+if len(s) == 0 {
+    // normal code
+}
+```
+
+
+4.2 切片
+
+空 slice 判断。
+
+```go
+
+// bad
+if len(slice) > 0 {
+    // normal code
+}
+
+// good
+if slice != nil && len(slice) > 0 {
+    // normal code
+}
+```
+
+上面判断同样适用于 map、channel。
+
+声明 slice。
+
+```go
+
+// bad
+s := []string{}
+s := make([]string, 0)
+
+// good
+var s []string
+```
+
+slice 新增。
+
+```go
+
+// bad
+var a, b []int
+for _, v := range a {
+    b = append(b, v)
+}
+
+// good
+var a, b []int
+b = append(b, a...)
+```
+
+4.3 结构体
+
+struct 初始化。struct 以多行格式初始化。
+
+```go
+
+ype user struct {
+  Id   int64
+  Name string
+}
+
+u1 := user{100, "Colin"}
+
+u2 := user{
+    Id:   200,
+    Name: "Lex",
+}
+```
+
+5. 控制结构
+   
+5.1 if
+
+if 接受初始化语句，约定如下方式建立局部变量。
+
+```go
+
+if err := loadConfig(); err != nil {
+  // error handling
+  return err
+}
+```
+
+if 对于 bool 类型的变量，应直接进行真假判断。
+
+```go
+
+var isAllow bool
+if isAllow {
+  // normal code
+}
+```
+
+5.2 for
+
+采用短声明建立局部变量。
+
+```go
+
+sum := 0
+for i := 0; i < 10; i++ {
+    sum += 1
+}
+```
+
+不要在 for 循环里面使用 defer，defer 只有在函数退出时才会执行。
+
+```go
+
+// bad
+for file := range files {
+  fd, err := os.Open(file)
+  if err != nil {
+    return err
+  }
+  defer fd.Close()
+  // normal code
+}
+
+// good
+for file := range files {
+  func() {
+    fd, err := os.Open(file)
+    if err != nil {
+      return err
+    }
+    defer fd.Close()
+    // normal code
+  }()
+}
+```
+
+5.3 range
+
+如果只需要第一项（key），就丢弃第二个。
+
+```go
+
+for key := range keys {
+// normal code
+}
+```
+
+如果只需要第二项，则把第一项置为下划线。
+
+```go
+
+sum := 0
+for _, value := range array {
+    sum += value
+}
+```
+
+5.4 switch
+
+必须要有 default。
+
+```go
+
+switch os := runtime.GOOS; os {
+    case "linux":
+        fmt.Println("Linux.")
+    case "darwin":
+        fmt.Println("OS X.")
+    default:
+        fmt.Printf("%s.\n", os)
+}
+```
+
+5.5 goto
+
+业务代码禁止使用 goto 。
+框架或其他底层源码尽量不用。
+
+6. 函数
+   
+传入变量和返回变量以小写字母开头。
+函数参数个数不能超过 5 个。
+函数分组与顺序
+    函数应按粗略的调用顺序排序。
+    同一文件中的函数应按接收者分组。
+尽量采用值传递，而非指针传递。
+传入参数是 map、slice、chan、interface ，不要传递指针。
+
+6.1 函数参数
+
+如果函数返回相同类型的两个或三个参数，或者如果从上下文中不清楚结果的含义，使用命名返回，其他情况不建议使用命名返回，例如：
+
+```go
+
+func coordinate() (x, y float64, err error) {
+  // normal code
+}
+```
+
+传入变量和返回变量都以小写字母开头。
+尽量用值传递，非指针传递。
+参数数量均不能超过 5 个。
+多返回值最多返回三个，超过三个请使用 struct。
+
+6.2 defer
+
+当存在资源创建时，应紧跟 defer 释放资源 (可以大胆使用 defer，defer 在 Go1.14 版本中，性能大幅提升，defer 的性能损耗即使在性能敏感型的业务中，也可以忽略)。
+先判断是否错误，再 defer 释放资源，例如：
+
+```go
+
+rep, err := http.Get(url)
+if err != nil {
+    return err
+}
+
+defer resp.Body.Close()
+```
+
+6.3 方法的接收器
+
+推荐以类名第一个英文首字母的小写作为接收器的命名。
+接收器的命名在函数超过 20 行的时候不要用单字符。
+接收器的命名不能采用 me、this、self 这类易混淆名称。
+
+6.4 嵌套
+
+嵌套深度不能超过 4 层。
+
+6.5 变量命名
+
+变量声明尽量放在变量第一次使用的前面，遵循就近原则。
+如果魔法数字出现超过两次，则禁止使用，改用一个常量代替，例如：
+
+```go
+
+// PI ...
+const Prise = 3.14
+
+func getAppleCost(n float64) float64 {
+  return Prise * n
+}
+
+func getOrangeCost(n float64) float64 {
+  return Prise * n
+}
+```
+
+7. GOPATH 设置规范
+   
+Go 1.11 之后，弱化了 GOPATH 规则，已有代码（很多库肯定是在 1.11 之前建立的）肯定符合这个规则，建议保留 GOPATH 规则，便于维护代码。
+
+建议只使用一个 GOPATH，不建议使用多个 GOPATH。如果使用多个 GOPATH，编译生效的 bin 目录是在第一个 GOPATH 下。
+
+8. 依赖管理
+   
+Go 1.11 以上必须使用 Go Modules。
+使用 Go Modules 作为依赖管理的项目时，不建议提交 vendor 目录。
+使用 Go Modules 作为依赖管理的项目时，必须提交 go.sum 文件。
+
+
+9. 最佳实践
+   
+尽量少用全局变量，而是通过参数传递，使每个函数都是“无状态”的。这样可以减少耦合，也方便分工和单元测试。在编译时验证接口的符合性，例如：
+
+服务器处理请求时，应该创建一个 context，保存该请求的相关信息（如 requestID），并在函数调用链中传递。
+
+
+9.1 性能
+
+string 表示的是不可变的字符串变量，对 string 的修改是比较重的操作，基本上都需要重新申请内存。所以，如果没有特殊需要，需要修改时多使用 []byte。
+优先使用 strconv 而不是 fmt。
+
+9.2 注意事项
+
+append 要小心自动分配内存，append 返回的可能是新分配的地址。
+如果要直接修改 map 的 value 值，则 value 只能是指针，否则要覆盖原来的值。
+map 在并发中需要加锁。
+编译过程无法检查 interface{} 的转换，只能在运行时检查，小心引起 panic。
+
