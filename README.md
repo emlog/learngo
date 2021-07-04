@@ -572,7 +572,8 @@ doSomethingForAWhile()
 
 * https://golang.org/pkg/ 【GO标准库中文网：英文】
 * https://books.studygolang.com/The-Golang-Standard-Library-by-Example/ 【GO标准库中文网：中文】
-* https://gorm.io/zh_CN/docs/index.html 【GORM 指南】
 * https://gfw.go101.org/article/101.html 【Go语言101 】
+* https://github.com/xxjwxc/uber_go_guide_cn 【Uber GO语言编码规范】
+* https://gorm.io/zh_CN/docs/index.html 【GORM 指南】
 * github-markdown-toc 用于生成该文档的目录，#gh-md-toc /readme.md
 
