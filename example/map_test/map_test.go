@@ -1,7 +1,9 @@
 // map哈希表的使用
 package map_test
 
-import "testing"
+import (
+	"testing"
+)
 
 // 初始化map
 func TestInitMap(t *testing.T) {
