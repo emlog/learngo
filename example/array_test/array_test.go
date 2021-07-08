@@ -12,8 +12,9 @@ func TestArrayInt(t *testing.T) {
 	t.Log(arr[1], arr[2])
 	t.Log(arr1, arr2, arr3)
 
-	var arr22 = [3]int{1, 2, 3}
-	t.Logf("arr22: %d", arr22[1])
+	// 二维数组
+	var arr4 = [2][4]int{{1, 2, 3}, {4, 5, 6}}
+	t.Log(arr4[0][1])
 }
 
 // 数组遍历

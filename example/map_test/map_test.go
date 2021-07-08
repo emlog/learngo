@@ -36,8 +36,10 @@ func TestAccessNoexistKey(t *testing.T) {
 }
 
 // 遍历map
+// map 是无序的,每次打印出来的 map 都会不一样,它不能通过 index 获取,而必须通过 key 获取
 func TestTravelMap(t *testing.T) {
-	m1 := map[int]int{1: 2, 2: 3, 3: 4}
+	m1 := map[int]int{1: 2, 2: 3, 3: 4, 4: 5}
+	delete(m1, 1) // 通过 delete 删除 map 的元素
 	for k, v := range m1 {
 		t.Log(k, v)
 	}
