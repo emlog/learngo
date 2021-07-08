@@ -11,6 +11,7 @@ import (
 func TestSliceInit(t *testing.T) {
 	var s0 []int
 	t.Log(len(s0), cap(s0)) // 打印切片长度len、容量cap
+
 	s0 = append(s0, 1)
 	t.Log(len(s0), cap(s0))
 
@@ -19,7 +20,6 @@ func TestSliceInit(t *testing.T) {
 
 	s2 := make([]int, 3, 5)
 	t.Log(len(s2), cap(s2))
-	// t.Log(s2[1], s2[4])
 
 	s2 = append(s2, 1)
 	t.Log(s2[1], s2[3])
