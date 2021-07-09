@@ -8,12 +8,17 @@ import (
 )
 
 func TestGroutine(t *testing.T) {
+	var wg sync.WaitGroup
 	for i := 0; i < 10; i++ {
+		wg.Add(1)
 		go func(i int) {
+			defer func() {
+				wg.Done()
+			}()
 			fmt.Println(i) // 输出顺序可能不是顺序的1234567…… 是因为协程的调用并不是顺序的，存在并发
 		}(i)
 	}
-	time.Sleep(time.Second * 2)
+	wg.Wait()
 	t.Log("done")
 }
 
