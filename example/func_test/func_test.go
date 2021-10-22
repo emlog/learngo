@@ -49,3 +49,16 @@ func TestVarParam(t *testing.T) {
 	t.Log(Sum(1, 2, 3, 4))
 	t.Log(Sum(1, 2, 3, 4, 5))
 }
+
+func Snow() (a int, err error) {
+	a = 111
+	err = nil
+
+	return
+}
+
+func TestVarParam2(t *testing.T) {
+	b2, err := Snow()
+
+	fmt.Printf("b2: %d, err: %v", b2, err)
+}

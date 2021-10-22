@@ -228,7 +228,7 @@ float32 和 float64 通常应该优先使用float64类型，因为float32类型�
 * string是数据类型，不是引用或者指针类型
 * string是只读的byte slice，len可以获取它包含的byte数
 * 双引号用来表示字符串string，单引号表示rune类型(int32)
-* Unicode是一种字符集（code point） ，UTF8是Unicode的一种存储实现看，UTF8编码使用1到4个字节来表示每个Unicode point
+* Unicode是一种字符集（code point） ，UTF8是Unicode的一种存储实现，UTF8编码使用1到4个字节来表示每个Unicode point
 
 ### 自定义类型
 

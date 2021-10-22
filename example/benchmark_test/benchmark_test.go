@@ -55,7 +55,6 @@ func BenchmarkConcatStringByBytesBuffer(b *testing.B) {
 
 		for _, elem := range elems {
 			buf.WriteString(elem)
-
 		}
 	}
 	b.StopTimer()
