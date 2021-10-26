@@ -59,18 +59,12 @@
 vi ~/.zshrc 添加以下代码 (永久设置环境变量)
 
 ```shell script
-export GOROOT=/usr/local/go
 export GOPATH=/Users/xudawei/gowork
-export GOBIN=
-export PATH=$PATH:${GOPATH//://bin:}/bin
-export GO111MODULE=auto
 ```
 
-* GO111MODULE=off，go命令行将不会支持module功能，寻找依赖包的方式将会沿用旧版本那种通过vendor目录或者GOPATH模式来查找。
-* GO111MODULE=on，go命令行会使用modules，不再去GOPATH目录下查找。
-*
-
-GO111MODULE=auto，默认值，go命令行将会根据当前目录来决定是否启用module功能。这种情况下可以分为两种情形：1、当前目录在GOPATH/src之外且该目录包含go.mod文件，2、当前文件在包含go.mod文件的目录下面。
+### 配置proxy，阿里的镜像
+* go env -w GOPROXY=https://mirrors.aliyun.com/goproxy/
+* go env|grep GOPROXY
 
 ## 变量和常量
 
@@ -519,6 +513,10 @@ func main() {
 	... // 并没有使用匿名引入的pprof包
 }
 ```
+
+## GO module
+
+Go module 构建模式是在 Go 1.11 版本正式引入的，为的是彻底解决 Go 项目复杂版本依赖的问题，在 Go 1.16 版本中，Go module 已经成为了 Go 默认的包依赖管理机制和 Go 源码构建机制。
 
 ## 并发编程
 
