@@ -3,6 +3,7 @@ package server
 import (
 	"encoding/json"
 	"net/http"
+	"time"
 
 	"github.com/emlog/github.com/emlog/goexample/store"
 	"github.com/emlog/goexample/server/middleware"
@@ -70,4 +71,20 @@ func response(w http.ResponseWriter, v interface{}) {
 	}
 	w.Header().Set("Content-Type", "application/json")
 	w.Write(data)
+}
+
+func (bs *BookStoreServer) ListenAndServe() (<-chan error, error) {
+	var err error
+	errChan := make(chan error)
+	go func() {
+		err = bs.srv.ListenAndServe()
+		errChan <- err
+	}()
+
+	select {
+	case err = <-errChan:
+		return nil, err
+	case <-time.After(time.Second):
+		return errChan, nil
+	}
 }
