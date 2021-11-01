@@ -1,10 +1,10 @@
 package main
 
 import (
-	_ "bookstore/internal/store"
-	"bookstore/server"
-	"bookstore/store/factory"
 	"context"
+	_ "goexample/internal/store"
+	"goexample/server"
+	"goexample/store/factory"
 	"log"
 	"os"
 	"os/signal"

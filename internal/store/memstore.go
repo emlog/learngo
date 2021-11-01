@@ -3,17 +3,10 @@ package store
 import (
 	"sync"
 
+	mystore "goexample/store"
+	factory "goexample/store/factory"
+
 	"github.com/emlog/goexample/store/factory"
-)
-
-// internal/store/memstore.go
-
-package store
-
-import (
-mystore "bookstore/store"
-factory "bookstore/store/factory"
-"sync"
 )
 
 func init() {
