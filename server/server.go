@@ -5,16 +5,13 @@ import (
 	"net/http"
 
 	"github.com/emlog/github.com/emlog/goexample/store"
+	"github.com/emlog/goexample/server/middleware"
 )
-
-// server/server.go
 
 type BookStoreServer struct {
 	s   store.Store
 	srv *http.Server
 }
-
-// server/server.go
 
 func NewBookStoreServer(addr string, s store.Store) *BookStoreServer {
 	srv := &BookStoreServer{
@@ -34,8 +31,6 @@ func NewBookStoreServer(addr string, s store.Store) *BookStoreServer {
 	srv.srv.Handler = middleware.Logging(middleware.Validating(router))
 	return srv
 }
-
-// server/server.go
 
 func (bs *BookStoreServer) createBookHandler(w http.ResponseWriter, req *http.Request) {
 	dec := json.NewDecoder(req.Body)

@@ -63,8 +63,8 @@ export GOPATH=/Users/xudawei/gowork
 ```
 
 ### 配置proxy，阿里的镜像
-* go env -w GOPROXY=https://mirrors.aliyun.com/goproxy/
-* go env|grep GOPROXY
+* go env -w GOPROXY=https://mirrors.aliyun.com/goproxy/ 设置代理
+* go env -u GOPROXY 取消代理
 
 ## 变量和常量
 
