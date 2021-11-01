@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/emlog/goexample/store"
+	"github.com/emlog/github.com/emlog/goexample/store"
 )
 
 // store/factory/factory.go

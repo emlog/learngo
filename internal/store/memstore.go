@@ -3,10 +3,10 @@ package store
 import (
 	"sync"
 
-	mystore "goexample/store"
-	factory "goexample/store/factory"
+	mystore "github.com/emlog/goexample/store"
+	factory "github.com/emlog/goexample/store/factory"
 
-	"github.com/emlog/goexample/store/factory"
+	"github.com/emlog/github.com/emlog/goexample/store/factory"
 )
 
 func init() {

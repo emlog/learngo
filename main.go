@@ -2,14 +2,15 @@ package main
 
 import (
 	"context"
-	_ "goexample/internal/store"
-	"goexample/server"
-	"goexample/store/factory"
 	"log"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
+
+	_ "github.com/emlog/goexample/internal/store"
+	"github.com/emlog/goexample/server"
+	"github.com/emlog/goexample/store/factory"
 )
 
 func main() {

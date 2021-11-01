@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/emlog/goexample/store"
+	"github.com/emlog/github.com/emlog/goexample/store"
 )
 
 // server/server.go

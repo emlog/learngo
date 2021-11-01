@@ -46,4 +46,4 @@ endif
 
 .PHONY: fmt
 fmt: check
-	@goimports -l -w -local goexample/judge $(shell find . -type f -name '*.go' -not -path './vendor/*' -not -path './docs/*')
+	@goimports -l -w -local github.com/emlog/goexample/judge $(shell find . -type f -name '*.go' -not -path './vendor/*' -not -path './docs/*')
