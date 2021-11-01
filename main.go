@@ -1,20 +1,8 @@
 package main
 
-import (
-	"fmt"
+import "net/http"
 
-	"github.com/gin-gonic/gin"
-)
-
-// main函数只能用于main包中，且只能定义一个。
 func main() {
-	r := gin.Default()
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
-
-	fmt.Println("starting web server")
-	r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) { w.Write([]byte("hello, world")) })
+	http.ListenAndServe(":8080", nil)
 }
