@@ -62,3 +62,11 @@ func TestVarParam2(t *testing.T) {
 
 	fmt.Printf("b2: %d, err: %v", b2, err)
 }
+
+func Foo() {
+	if e := recover(); e != nil {
+		fmt.Println("recovered from ", e)
+	}
+
+	panic("panic err!!")
+}
