@@ -1,5 +1,10 @@
 package api
 
-func Init() {
+import (
+	"fmt"
+)
+
+func init() {
 	// app config
+	fmt.Println("test")
 }
