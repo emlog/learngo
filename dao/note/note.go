@@ -14,12 +14,10 @@ type NoteDao struct {
 func NewNoteDao() *NoteDao {
 	// DSN (Data Source Name)
 	// [username[:password]@][protocol[(address)]]/dbname[?param1=value1&...&paramN=valueN]
-	db, err := sql.Open("mysql", "user:password@127.0.0.1/test_note")
+	db, err := sql.Open("mysql", "root:12345678@(127.0.0.1)/test_note")
 	if err != nil {
 		panic(err.Error()) // Just for example purpose. You should use proper error handling instead of panic
 	}
-
-	defer db.Close()
 
 	return &NoteDao{db}
 }
