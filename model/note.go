@@ -1,6 +1,6 @@
 package model
 
-type note struct {
+type Note struct {
 	ID        int64  `json:"id"`
 	Content   string `json:"content"`
 	CreatedAt int64  `json:"created_at"`

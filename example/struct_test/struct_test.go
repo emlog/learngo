@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-// 初始化切片
+// 初始化一个结构体
 func TestStructInit(t *testing.T) {
 	// 声明结构体类型
 	type User struct {

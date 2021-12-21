@@ -1,17 +1,31 @@
 package api
 
 import (
-	"fmt"
-
+	"github.com/emlog/goexample/model/request"
+	"github.com/emlog/goexample/service"
 	"github.com/gin-gonic/gin"
 )
 
 func NoteCreate(c *gin.Context) {
-	message := c.PostForm("message")
+	req := &request.ReqNote{}
+	if err := c.ShouldBind(req); err != nil {
+		c.JSON(400, gin.H{
+			"error": err.Error(),
+		})
+		return
+	}
 
-	fmt.Printf("message: %s", message)
+	id, err := service.NewNoteService().CreateNote(req)
+
+	if err != nil {
+		c.JSON(400, gin.H{
+			"error": err.Error(),
+		})
+		return
+	}
 
 	c.JSON(200, gin.H{
-		"message": message,
+		"message": "success",
+		"id":      id,
 	})
 }
