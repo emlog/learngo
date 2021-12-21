@@ -1,5 +1,33 @@
+definitions:
+  request.ReqNote:
+    properties:
+      content:
+        type: string
+    type: object
 info:
   contact: {}
   license: {}
-paths: {}
+paths:
+  /note/create:
+    post:
+      consumes:
+      - application/json
+      description: 写入一条笔记
+      parameters:
+      - description: 请求参数
+        in: body
+        name: object
+        required: true
+        schema:
+          $ref: '#/definitions/request.ReqNote'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 返回结果
+          schema:
+            type: object
+      summary: 写笔记
+      tags:
+      - Note
 swagger: "2.0"

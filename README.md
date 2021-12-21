@@ -54,17 +54,13 @@
 
 ### 搭建golang开发环境
 
-### mac下设置GOPATH
+### 配置国内代理
+* go env -w GOPROXY=https://goproxy.cn,direct
+* go env -u GOPROXY //取消代理
 
-vi ~/.zshrc 添加以下代码 (永久设置环境变量)
-
-```shell script
-export GOPATH=/Users/xudawei/gowork
-```
-
-### 配置proxy，阿里的镜像
-* go env -w GOPROXY=https://mirrors.aliyun.com/goproxy/ 设置代理
-* go env -u GOPROXY 取消代理
+### go 常用命令
+* go get -u github.com/golang/lint/golint
+* go mod tidy
 
 ## 变量和常量
 

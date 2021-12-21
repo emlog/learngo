@@ -6,6 +6,15 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// NoteCreate 创建笔记
+// @Summary 写笔记
+// @Description 写入一条笔记
+// @Tags Note
+// @Accept json
+// @Produce json
+// @Param object body request.ReqNote{} true "请求参数"
+// @Success 200 {object} interface{} "返回结果"
+// @Router /note/create [post]
 func NoteCreate(c *gin.Context) {
 	req := &request.ReqNote{}
 	if err := c.ShouldBind(req); err != nil {
