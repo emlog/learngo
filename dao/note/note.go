@@ -21,6 +21,8 @@ func NewNoteDao() *NoteDao {
 		log.Fatal(err)
 	}
 
+	engine.ShowSQL(true)
+
 	return &NoteDao{engine}
 }
 
