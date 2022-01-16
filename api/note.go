@@ -1,9 +1,10 @@
 package api
 
 import (
+	"github.com/gin-gonic/gin"
+
 	"github.com/emlog/goexample/model/request"
 	"github.com/emlog/goexample/service"
-	"github.com/gin-gonic/gin"
 )
 
 // NoteCreate 创建笔记

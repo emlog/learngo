@@ -10,8 +10,6 @@ func TestTime(t *testing.T) {
 	timestamp := time.Now().Unix()
 	t.Logf("unix timestamp: %d", timestamp)
 
-	time.Now().Unix()
-
 	// 格式化为字符串,tm为Time类型
 	tm := time.Unix(timestamp, 0)
 	t.Log(tm.Format("2006-01-02 03:04:05 PM"))       // 这是个奇葩,必须是这个时间点, 据说是go诞生之日, 记忆方法:6-1-2-3-4-5
