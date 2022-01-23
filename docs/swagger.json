@@ -1,8 +1,11 @@
 {
     "swagger": "2.0",
     "info": {
+        "description": "Go 语言编程之旅：一起用 Go 做项目",
+        "title": "博客系统",
+        "termsOfService": "https://github.com/go-programming-tour-book",
         "contact": {},
-        "license": {}
+        "version": "1.0"
     },
     "paths": {
         "/note/create": {
@@ -31,9 +34,9 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "返回结果",
+                        "description": "OK",
                         "schema": {
-                            "type": "object"
+                            "$ref": "#/definitions/respone.RespNote"
                         }
                     }
                 }
@@ -45,6 +48,20 @@
             "type": "object",
             "properties": {
                 "content": {
+                    "description": "内容",
+                    "type": "string"
+                }
+            }
+        },
+        "respone.RespNote": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "description": "返回文章id",
+                    "type": "integer"
+                },
+                "message": {
+                    "description": "返回信息",
                     "type": "string"
                 }
             }

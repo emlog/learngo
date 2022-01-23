@@ -2,11 +2,24 @@ definitions:
   request.ReqNote:
     properties:
       content:
+        description: 内容
+        type: string
+    type: object
+  respone.RespNote:
+    properties:
+      id:
+        description: 返回文章id
+        type: integer
+      message:
+        description: 返回信息
         type: string
     type: object
 info:
   contact: {}
-  license: {}
+  description: Go 语言编程之旅：一起用 Go 做项目
+  termsOfService: https://github.com/go-programming-tour-book
+  title: 博客系统
+  version: "1.0"
 paths:
   /note/create:
     post:
@@ -24,9 +37,9 @@ paths:
       - application/json
       responses:
         "200":
-          description: 返回结果
+          description: OK
           schema:
-            type: object
+            $ref: '#/definitions/respone.RespNote'
       summary: 写笔记
       tags:
       - Note

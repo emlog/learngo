@@ -2,6 +2,7 @@ package channel_test
 
 import (
 	"testing"
+	"time"
 )
 
 func TestChannel(t *testing.T) {
@@ -9,6 +10,7 @@ func TestChannel(t *testing.T) {
 	// ch1 := make(chan int, 5) 带缓冲区的channel
 	ch1 := make(chan int)
 	go func() {
+		time.Sleep(5)
 		ch1 <- 100
 	}()
 

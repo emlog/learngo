@@ -4,6 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"github.com/emlog/goexample/model/request"
+	"github.com/emlog/goexample/model/respone"
 	"github.com/emlog/goexample/service"
 )
 
@@ -13,8 +14,8 @@ import (
 // @Tags Note
 // @Accept json
 // @Produce json
-// @Param object body request.ReqNote{} true "请求参数"
-// @Success 200 {object} interface{} "返回结果"
+// @Param object body request.ReqNote true "请求参数"
+// @Success 200 {object} respone.RespNote
 // @Router /note/create [post]
 func NoteCreate(c *gin.Context) {
 	req := &request.ReqNote{}
@@ -33,9 +34,8 @@ func NoteCreate(c *gin.Context) {
 		})
 		return
 	}
-
-	c.JSON(200, gin.H{
-		"message": "success",
-		"id":      id,
+	c.JSON(200, respone.RespNote{
+		Message: "success",
+		Id:      id,
 	})
 }

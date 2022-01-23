@@ -2,6 +2,11 @@ package api
 
 import (
 	"github.com/gin-gonic/gin"
+
+	_ "github.com/emlog/goexample/docs"
+
+	ginSwagger "github.com/swaggo/gin-swagger"
+	"github.com/swaggo/gin-swagger/swaggerFiles"
 )
 
 func Router(router *gin.Engine) {
@@ -9,9 +14,8 @@ func Router(router *gin.Engine) {
 	note := router.Group("/note")
 	{
 		note.POST("/create", NoteCreate)
-		// note.POST("/read", readEndpoint)
-		// note.POST("/update", updateEndpoint)
-		// note.POST("/delete", deleteEndpoint)
 	}
+
+	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 }
