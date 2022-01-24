@@ -1,7 +1,10 @@
 // 数组（array）的使用
 package array_test
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 // 数组初始化
 func TestArrayInt(t *testing.T) {
@@ -10,7 +13,7 @@ func TestArrayInt(t *testing.T) {
 	arr2 := [...]int{1, 2, 3, 4} // "..." 表示数组的长度是根据初始化值的个数来计算
 	arr3 := [2]string{"snow", "sun"}
 	t.Log(arr[1], arr[2])
-	t.Log(arr1, arr2, arr3)
+	fmt.Println(arr1, arr2, arr3)
 
 	// 二维数组
 	var arr4 = [2][4]int{{1, 2, 3}, {4, 5, 6}}
