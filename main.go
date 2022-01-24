@@ -13,5 +13,5 @@ import (
 func main() {
 	router := gin.Default()
 	api.Router(router)
-	router.Run(":8080")
+	router.Run(":5956")
 }

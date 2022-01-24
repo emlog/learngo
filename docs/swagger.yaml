@@ -16,9 +16,10 @@ definitions:
     type: object
 info:
   contact: {}
-  description: Go 语言编程之旅：一起用 Go 做项目
-  termsOfService: https://github.com/go-programming-tour-book
-  title: 博客系统
+  description: 简易笔记发布系统 - GO学习参考项目
+  license: {}
+  termsOfService: https://github.com/emlog/goexample
+  title: 简易笔记工具
   version: "1.0"
 paths:
   /note/create:
