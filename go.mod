@@ -4,6 +4,7 @@ go 1.16
 
 require (
 	cloud.google.com/go v0.93.3 // indirect
+	github.com/alecthomas/template v0.0.0-20160405071501-a0175ee3bccc
 	github.com/gin-gonic/gin v1.7.7
 	github.com/go-sql-driver/mysql v1.6.0
 	github.com/go-xorm/xorm v0.7.9
