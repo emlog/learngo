@@ -10,7 +10,8 @@ func TestChannel(t *testing.T) {
 	// ch1 := make(chan int, 5) 带缓冲区的channel
 	ch1 := make(chan int)
 	go func() {
-		time.Sleep(5)
+		// 等待channel有数据
+		time.Sleep(time.Second * 2) // Duration的单位为 nanosecond
 		ch1 <- 100
 	}()
 
