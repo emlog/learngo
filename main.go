@@ -1,17 +1,25 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
-
-	"github.com/emlog/goexample/api"
+	"flag"
+	"fmt"
 )
 
-// @title 简易笔记工具
-// @version 1.0
-// @description 简易笔记发布系统 - GO学习参考项目
-// @termsOfService https://github.com/emlog/goexample
+var (
+	intflag    int
+	boolflag   bool
+	stringflag string
+)
+
 func main() {
-	router := gin.Default()
-	api.Router(router)
-	router.Run(":5956")
+
+	flag.IntVar(&intflag, "intflag", 0, "int flag value")
+	flag.BoolVar(&boolflag, "boolflag", false, "bool flag value")
+	flag.StringVar(&stringflag, "stringflag", "default", "string flag value")
+
+	flag.Parse()
+
+	fmt.Println("int flag:", intflag)
+	fmt.Println("bool flag:", boolflag)
+	fmt.Println("string flag:", stringflag)
 }
