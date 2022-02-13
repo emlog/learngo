@@ -12,13 +12,13 @@ const (
 )
 
 const (
-	Readable = 1 << iota
+	Readable = 1 << iota // 位运算
 	Writable
 	Executable
 )
 
 func TestConstantTry(t *testing.T) {
-	t.Log(Monday, Tuesday)
+	t.Log(Monday, Tuesday, Wednesday)
 }
 
 func TestConstantTry1(t *testing.T) {

@@ -36,9 +36,9 @@ func TestArrayTravel(t *testing.T) {
 
 // 截取数组中的第一段
 func TestArraySection(t *testing.T) {
-	arr3 := [...]int{3, 4, 6, 7, 8}
-	arrSec1 := arr3[3:]
-	arrSec2 := arr3[:5]
-	arrSec3 := arr3[1:4]
+	arr3 := [...]int{0, 1, 2, 3, 4, 5, 6, 7, 8}
+	arrSec1 := arr3[1:4] // 从下标1开始，到下标4结束（包括下标1，不包括下标4）
+	arrSec2 := arr3[3:]
+	arrSec3 := arr3[:5]
 	t.Log(arrSec1, arrSec2, arrSec3)
 }
