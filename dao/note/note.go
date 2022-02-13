@@ -3,9 +3,10 @@ package note
 import (
 	"log"
 
-	"github.com/emlog/goexample/model/request"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/go-xorm/xorm"
+
+	"github.com/emlog/goexample/model/request"
 )
 
 type NoteDao struct {
