@@ -6,9 +6,9 @@ import (
 )
 
 func TestFloat64(t *testing.T) {
-	a := 3744
-	b := 3788
+	var a float64 = 3744
+	var b float64 = 3788
 	// 除法，保留两位小数的浮点型
-	y := fmt.Sprintf("%.2f", float64(a)/float64(b))
+	y := fmt.Sprintf("%.2f", a/b)
 	t.Log(y)
 }

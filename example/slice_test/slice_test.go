@@ -23,6 +23,20 @@ func TestSliceInit(t *testing.T) {
 
 	s2 = append(s2, 1)
 	t.Log(s2[1], s2[3])
+
+	// nil切片在运行时表示的三个字段值都是0；而空切片的len、cap值为0，但data值不为零。
+	// 空切片到底分没分配底层数组？ 答案是肯定的：没有分配！
+	var sl1 = []int{} // sl1是空切片
+	var sl2 []int     // sl2是nil切片
+
+	for x, y := range sl1 {
+		t.Logf("empty slice: x:%d, y:%d", x, y)
+	}
+
+	for x, y := range sl2 {
+		t.Logf("nil slice: x:%d, y:%d", x, y)
+	}
+
 }
 
 // 切片长度自动扩容，前一次的2倍
