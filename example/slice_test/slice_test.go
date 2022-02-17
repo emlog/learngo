@@ -18,6 +18,8 @@ func TestSliceInit(t *testing.T) {
 	s1 := []int{1, 3, 5}
 	t.Log(len(s1), cap(s1))
 
+	t.Logf("%v", s1) // [ 1 3 5 ]
+
 	s2 := make([]int, 3, 5)
 	t.Log(len(s2), cap(s2))
 
