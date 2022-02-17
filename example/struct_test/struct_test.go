@@ -25,5 +25,7 @@ func TestStructInit(t *testing.T) {
 		Email:    "colin404@foxmail.com",
 	}
 
-	t.Logf("user: %s, email: %s", user.Username, a.Email)
+	//	when printing structs, the plus flag (%+v) adds field names
+	t.Logf("%+v", user)
+
 }
