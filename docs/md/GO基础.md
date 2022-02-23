@@ -61,6 +61,8 @@
 ### go 常用命令
 * go get -u github.com/golang/lint/golint
 * go mod tidy
+* go get . //get dependencies for code in the current directory.获取当前目录下代码的依赖
+
 
 ## 变量和常量
 
