@@ -16,18 +16,17 @@ func TestString(t *testing.T) {
 	s = "hello"   // 在Go中，双引号是用来表示字符串string，其实质是一个byte类型的数组，单引号表示rune类型(int32)
 	t.Log(len(s)) // 返回此字符串中存储的字节数 英文占一个字节，中文占三个字节
 	// s[1] = '3' //string是不可变的byte slice
-	// s = "\xE4\xB8\xA5" //可以存储任何二进制数据
-	s = "\xE4\xBA\xBB\xFF"
+	s = "\xE4\xB8\x96" // 可以存储任何二进制数据 汉字："世" 的十六进制表示
 	t.Log(s)
 	t.Log(len(s))
-	s = "中"
+	s = "世"
 	t.Log(len(s)) // 是byte数 3
 
 	c := []rune(s)
 	t.Log(len(c))
 	//	t.Log("rune size:", unsafe.Sizeof(c[0]))
-	t.Logf("中 unicode %x", c[0])
-	t.Logf("中 UTF8 %x", s)
+	t.Logf("世 unicode %x", c[0])
+	t.Logf("世 UTF8 %x", s)
 }
 
 func TestStringToRune(t *testing.T) {
@@ -41,13 +40,15 @@ func TestStringToRune(t *testing.T) {
 
 // 字符串分割 split 和连接 join
 func TestStringFn(t *testing.T) {
+	// 分割
 	s := "A,B,C"
 	parts := strings.Split(s, ",")
 	for _, part := range parts {
 		t.Log(part)
 	}
+
+	// 连接
 	t.Log(strings.Join(parts, "-"))
-	t.Log(strings.Join(parts, "+++"))
 }
 
 // 字符串和int的转换
