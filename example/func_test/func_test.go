@@ -1,6 +1,4 @@
-/*
-函数的使用
-*/
+// 函数的使用
 package func_test
 
 import (

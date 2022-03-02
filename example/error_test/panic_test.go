@@ -1,6 +1,4 @@
-/*
-panic处理机制
-*/
+// panic处理机制
 package error_test
 
 import (
@@ -38,6 +36,6 @@ func TestPanic(t *testing.T) {
 	panic(errors.New("someting wrong"))
 
 	// 不会执行defer函数
-	//os.Exit(-1)
+	// os.Exit(-1)
 
 }

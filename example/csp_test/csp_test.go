@@ -1,9 +1,7 @@
-/*
-CSP 并发机制的使用。
-Go 语言实现了基于 CSP（Communicating Sequential Processes）理论的并发方案。
-Go 语言的 CSP 模型的实现包含两个主要组成部分：一个是 Goroutine，它是 Go 应用并发设计的基本构建与执行单元；另一个就是 channel，它在并发模型中扮演着重要的角色。
-channel 既可以用来实现 Goroutine 间的通信，还可以实现 Goroutine 间的同步。在 Go 并发设计时灵活运用 channel，才能说真正掌握了 Go 并发设计的真谛。
-*/
+// CSP 并发机制的使用。
+// Go 语言实现了基于 CSP（Communicating Sequential Processes）理论的并发方案。
+// Go 语言的 CSP 模型的实现包含两个主要组成部分：一个是 Goroutine，它是 Go 应用并发设计的基本构建与执行单元；另一个就是 channel，它在并发模型中扮演着重要的角色。
+// channel 既可以用来实现 Goroutine 间的通信，还可以实现 Goroutine 间的同步。在 Go 并发设计时灵活运用 channel，才能说真正掌握了 Go 并发设计的真谛。
 package concurrency
 
 import (

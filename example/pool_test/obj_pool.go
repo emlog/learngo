@@ -1,4 +1,4 @@
-// 对象池的使用，用来换成难以创建可重复使用的对象
+// Package object_pool 对象池的使用，用来换成难以创建可重复使用的对象
 package object_pool
 
 import (
@@ -10,7 +10,7 @@ type ReuseableObj struct {
 }
 
 type ObjPool struct {
-	bufChan chan *ReuseableObj //用于缓冲可重用对象
+	bufChan chan *ReuseableObj // 用于缓冲可重用对象
 }
 
 func NewObjPool(numOfObj int) *ObjPool {
@@ -26,7 +26,7 @@ func (p *ObjPool) GetObj(timeout time.Duration) (*ReuseableObj, error) {
 	select {
 	case ret := <-p.bufChan:
 		return ret, nil
-	case <-time.After(timeout): //超时控制
+	case <-time.After(timeout): // 超时控制
 		return nil, errors.New("time out")
 	}
 

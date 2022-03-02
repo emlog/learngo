@@ -1,6 +1,4 @@
-/*
-接口的使用
-*/
+// 接口的使用
 package interface_test
 
 import "testing"
