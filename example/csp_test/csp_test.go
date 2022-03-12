@@ -62,3 +62,26 @@ func TestSelect(t *testing.T) {
 		t.Error("time out ")
 	}
 }
+
+// 通道基础测试
+func TestChannel(t *testing.T) {
+	// var ch1 chan int
+	// ch1 := make(chan int, 5) 带缓冲区的channel
+	ch1 := make(chan int)
+	go func() {
+		// 等待channel有数据
+		time.Sleep(time.Second * 2) // Duration的单位为 nanosecond
+		ch1 <- 100
+	}()
+
+	a := <-ch1
+	t.Logf("a:%d", a)
+}
+
+func TestA(t *testing.T) {
+	tick := time.Tick(1 * time.Second)
+	for countdown := 10; countdown > 0; countdown-- {
+		fmt.Println(countdown)
+		<-tick // 接收一个节拍器的事件。
+	}
+}
