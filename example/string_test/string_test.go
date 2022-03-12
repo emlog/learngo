@@ -1,6 +1,4 @@
-/*
-字符串的使用
-*/
+// 字符串的使用
 package string_test
 
 import (

@@ -1,6 +1,4 @@
-/*
-结构体（struct）的使用
-*/
+// 结构体（struct）的使用
 package struct_test
 
 import (

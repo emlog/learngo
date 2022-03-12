@@ -1,6 +1,4 @@
-/*
-错误error处理,及早失败，避免嵌套
-*/
+// 错误error处理,及早失败，避免嵌套
 package error_test
 
 import (

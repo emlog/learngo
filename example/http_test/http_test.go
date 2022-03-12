@@ -1,6 +1,4 @@
-/*
-http 网络请求的使用
-*/
+// http 网络请求的使用
 package http_test
 
 import (
