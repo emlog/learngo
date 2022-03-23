@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/gin-gonic/gin"
 
 	"github.com/emlog/goexample/api"
@@ -34,4 +36,6 @@ func main() {
 	router := gin.Default()
 	api.Router(router)
 	router.Run(":5956")
+
+	fmt.Println("程序退出")
 }
