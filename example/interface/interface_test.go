@@ -69,8 +69,19 @@ func getType(a interface{}) {
 	}
 }
 
+// 接口类型的类型断言
+func checkType(value interface{}) {
+	if a, ok := value.(string); ok {
+		fmt.Println(a)
+	} else {
+		fmt.Println("not string")
+	}
+}
+
 func TestInterface(t *testing.T) {
 	getType(1)
 	getType("hello")
 	getType(1.1)
+
+	checkType(111111)
 }
