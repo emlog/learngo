@@ -1,3 +1,4 @@
+// 泛型
 package main
 
 import "fmt"
