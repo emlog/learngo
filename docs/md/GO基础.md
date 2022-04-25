@@ -522,7 +522,7 @@ Go module 构建模式是在 Go 1.11 版本正式引入的，为的是彻底解�
 
 ## 并发编程
 
-## @ Goroutines
+### @ Goroutines
 
 在Go语言中，每一个并发的执行单元叫作一个goroutine。当一个程序启动时，其主函数即在一个单独的goroutine中运行，我们叫它main goroutine。
 新的goroutine会用go语句来创建。在语法上，go语句是一个普通的函数或方法调用前加上关键字go。go语句会使其语句中的函数在一个新创建的goroutine中运行。而go语句本身会迅速地完成。
@@ -549,6 +549,7 @@ doSomethingForAWhile()
 * gofmt 保存的时候自动 格式化go代码
 * goimports 保存的时候自动导入处理包 (需要先安装: go get golang.org/x/tools/cmd/goimports)
 * gometalinter 保存的时候自动检查go语法
+
 
 ## 参考文档
 

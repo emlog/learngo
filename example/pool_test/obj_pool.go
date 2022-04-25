@@ -1,4 +1,4 @@
-// Package object_pool 对象池的使用，用来换成难以创建可重复使用的对象
+// Package object_pool 对象池的使用，用来缓存难以创建可重复使用的对象
 package object_pool
 
 import (
