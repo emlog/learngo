@@ -1,7 +1,10 @@
 // 接口的使用
 package interface_test
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 // 定义一个接口 Programmer
 type Programmer interface {
@@ -50,4 +53,35 @@ type S1 struct {
 	J
 	a int
 	b string
+}
+
+// getType 类型断言 返回接口类型的实际类型
+func getType(a interface{}) {
+	switch a.(type) {
+	case int:
+		fmt.Println("the type of a is int")
+	case string:
+		fmt.Println("the type of a is string")
+	case float64:
+		fmt.Println("the type of a is float")
+	default:
+		fmt.Println("unknown type")
+	}
+}
+
+// 接口类型的类型断言
+func checkType(value interface{}) {
+	if a, ok := value.(string); ok {
+		fmt.Println(a)
+	} else {
+		fmt.Println("not string")
+	}
+}
+
+func TestInterface(t *testing.T) {
+	getType(1)
+	getType("hello")
+	getType(1.1)
+
+	checkType(111111)
 }

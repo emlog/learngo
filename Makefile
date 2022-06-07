@@ -1,40 +1,83 @@
-.PHONY: run
-run: swag
-	@go run main.go -c ./deployments/config.testing.toml
+.PHONY: all test vendor docker golint build clean swag
 
-.PHONY: swag
-swag:
-	@swag i -g ./main.go
+SHELL = /bin/bash
 
-.PHONY: mod
-mod:
-	@go mod tidy
+# preset constants and variables
+PWD = $(shell pwd)
+DEPS := $(wildcard *.go)
 
-.PHONY: test
-test:
-	@go test -gcflags "all=-l" -race -coverprofile=coverage.out ./...
-	@go tool cover -html=coverage.out
+# color printing
+CE = "\033[0m"
+CRED = "\033[31m"
+CGREEN = "\033[32m"
+CYELLOW = "\033[33m"
 
-.PHONY: clean
+# version set
+GOCILINT_VERSION = "v1.44.2"
+
+# program detection
+SWAG_EXISTS := $(shell which swag 2>/dev/null | grep -c "/swag" )
+GOCILINT_EXISTS := $(shell which golangci-lint 2>/dev/null | grep -c "/golangci-lint" )
+DOCKER_CHECK := $(shell sysctl net.inet.tcp.sack 2>/dev/null | grep -c '0')
+
+# commands
+all: swag build
+
+# swag gofmt
+build: clean
+	@-echo -e ${CGREEN} "make build........................................................."
+	@-go mod tidy
+	@-go build -o application
+	@-echo -e ${CGREEN} "build succeeds with application as server executable..............."
+
+run: swag build r
+
+r:
+	@-echo -e ${CGREEN} "make run.........................................................."
+	RUN_ENV=development ./application
+
 clean:
-	-@rm -rf logs/* bin/* coverage.out
+	@-echo -e ${CGREEN} "make clean........................................................."
+	@-rm -rf logs
+	@-rm -f application
 
-.PHONY: lint
+test:
+	@-echo -e ${CGREEN} "make test........................................................."
+	@go test ./...
+
+gofmt:
+	@-echo -e ${CGREEN} "make gofmt........................................................."
+	@-echo 'gofmt -l -w  $$(find . -type f -name "*.go" -not -path "./vendor/*")  '
+	@-gofmt -l -w  $$(find . -type f -name '*.go' -not -path './vendor/*') >/dev/null
+
+swag:
+	@-echo -e ${CGREEN} "make swag........................................................."
+	@-if [ ${SWAG_EXISTS} -eq 0 ]; then  \
+		GO111MODULE="on" go get github.com/swaggo/gin-swagger; \
+		GO111MODULE="on" go install github.com/swaggo/swag/cmd/swag@latest; \
+		if [ ${SWAG_EXISTS} -eq 0 ]; then  \
+		   export PATH=$$PATH:$$GOPATH/bin;\
+		   echo -e ${CYELLOW} "请确保你的 ~/.bashrc 或 ~/.zshrc 中 PATH 包括 $$GOPATH/bin";\
+		fi; \
+	fi
+	@if [ $$(swag i -g main.go 2>&1 | tee /dev/stderr | grep -c "cannot find type definition") -gt 0 ]; then \
+    	swag i --pd --parseInternal --parseDepth 1 -g main.go; \
+    fi \
+
+# 可以本地创建vendor目录用户开发调试，但不可同步到代码库
+vendor:
+	@-echo -e ${CGREEN} "make vendor........................................................."
+	-GO111MODULE="on" go mod tidy
+	-GO111MODULE="on" go mod vendor
+
 lint:
-	@golangci-lint config path && golangci-lint run
-
-.PHONY: check
-check:
-ifeq (, $(shell which golangci-lint))
-	$(error golangci-lint not found in PATH)
-endif
-ifeq (, $(shell which goimports))
-	$(error goimports not found in PATH)
-endif
-ifeq (, $(shell which swag))
-	$(error swag not found in PATH)
-endif
-
-.PHONY: fmt
-fmt: check
-	@goimports -l -w -local gitlab.luojilab.com/igetserver/ledgers $(shell find . -type f -name '*.go' -not -path './vendor/*' -not -path './docs/*' -not -path './models/models*')
+	@-echo -e ${CGREEN} "make lint........................................................."
+	@-if [ ${GOCILINT_EXISTS} -eq 0 ]; then  \
+		echo "未检测到golangci-lint，开始安装.........................................................";\
+		echo "> 不使用go get方式安装的原因，参见：https://golangci-lint.run/usage/install/#install-from-source";\
+		echo "> 不使用brew install，原因暂时无法指定版本安装";\
+		echo "> 关于golangci-lint更多信息，请查阅 https://golangci-lint.run/usage/quick-start/";\
+		echo "> 若提示无法找到golangci-lint，尝试 source ~/.bashrc 或 ~/.zshrc";\
+		curl -sSfL https://gitlab.luojilab.com/snippets/26/raw | sh -s -- -b $(go env GOPATH)/bin ${GOCILINT_VERSION};\
+	fi
+	@golangci-lint run

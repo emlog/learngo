@@ -6,9 +6,12 @@ import (
 )
 
 func TestTime(t *testing.T) {
-	// 获取时间戳 int64
-	timestamp := time.Now().Unix()
-	t.Logf("unix timestamp: %d", timestamp)
+	timenow := time.Now()       // 获取当前时间
+	timestamp := timenow.Unix() // 获取时间戳 int64
+	timelocal := time.Local     // 获取当前时区
+	t.Logf("now: %v", timenow)
+	t.Logf("unix timestamp: %v", timestamp)
+	t.Logf("local: %v", timelocal)
 
 	// 格式化为字符串,tm为Time类型
 	tm := time.Unix(timestamp, 0)
