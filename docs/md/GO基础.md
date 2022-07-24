@@ -59,7 +59,8 @@
 * go env -u GOPROXY //取消代理
 
 ### go 常用命令
-* go get -u github.com/golang/lint/golint
+* go get -u github.com/golang/lint/golint // 更新包
+* go get -u github.com/golang/lint/golint@v1.1.0 // 更新到指定版本号
 * go mod tidy
 * go get . //get dependencies for code in the current directory.获取当前目录下代码的依赖
 
