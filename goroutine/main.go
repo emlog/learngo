@@ -13,6 +13,7 @@ func test() {
 
 	go func() {
 		fmt.Println("hi b")
+		return
 	}()
 
 	fmt.Println("hi c")
