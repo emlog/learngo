@@ -55,15 +55,16 @@
 ### 搭建golang开发环境
 
 ### 配置国内代理
+
 * go env -w GOPROXY=https://goproxy.cn,direct
 * go env -u GOPROXY //取消代理
 
 ### go 常用命令
+
 * go get -u github.com/golang/lint/golint // 更新包
 * go get -u github.com/golang/lint/golint@v1.1.0 // 更新到指定版本号
 * go mod tidy
 * go get . //get dependencies for code in the current directory.获取当前目录下代码的依赖
-
 
 ## 变量和常量
 
@@ -84,14 +85,14 @@ var y = 1
 var x int
 var a, s = 100, "abc"
 var {
-    x, y int
-    a, s = 100, "abc"
+x, y int
+a, s = 100, "abc"
 }
 
 // 简短模式：只能在函数内部使用，简短变量声明被广泛用于大部分的局部变量的声明和初始化。
 func main() {
-    x := 100
-    a, s := 1, "abc"
+x := 100
+a, s := 1, "abc"
 }
 ```
 
@@ -260,9 +261,13 @@ type StringSlice []string
 数组是一个由固定长度的特定类型元素组成的序列，默认情况下，数组的每个元素都被初始化为元素类型对应的零值
 
 ```go
-var a[3] int
-var q [3]int = [3]int{1, 2, 3} // 初始化一个数组
-q := [...]int{1, 2, 3} // “...”省略号表示数组的长度是根据初始化值的个数来计算
+a := [3]int
+
+a1 := [3]int{1, 2, 3} // 初始化一个数组
+a2 := [...]int{1, 2, 3} // “...”表示数组的长度是根据初始化值的个数来计算,Go语言会在编译期间通过源代码推导数组的大小 
+
+// [...]T 这种初始化方式也只是 Go 语言为我们提供的一种语法糖，当我们不想计算数组中的元素个数时可以通过这种方法减少一些工作量。
+
 ```
 
 ### 切片 Slice
@@ -557,14 +562,15 @@ Golang 支持交叉编译， 在一个平台上生成然后再另外一个平台
 
 ```go
 linux 下去执行
-CGO_ENABLED=0  GOOS=linux  GOARCH=amd64  go build main.go
+CGO_ENABLED = 0  GOOS = linux  GOARCH =amd64  go build main.go
 Windows 下去执行
-CGO_ENABLED=0 GOOS=windows  GOARCH=amd64  go  build  main.go
+CGO_ENABLED= 0 GOOS = windows  GOARCH = amd64  go build  main.go
 ```
 
 ## 参考文档
 
-* https://pkg.go.dev/ 
+* https://pkg.go.dev/
+* https://github.com/swaggo/swag 【swag文档】
 * https://gfw.go101.org/article/101.html 【Go语言101 】
 * https://github.com/xxjwxc/uber_go_guide_cn 【Uber GO语言编码规范】
 * https://gorm.io/zh_CN/docs/index.html 【GORM】
