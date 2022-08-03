@@ -2,6 +2,7 @@
 package slice_test
 
 import (
+	"sort"
 	"testing"
 )
 
@@ -37,14 +38,26 @@ func TestSliceInit(t *testing.T) {
 		t.Logf("nil slice: x:%d, y:%d", x, y)
 	}
 
-	// 二维切片
-	var twoD [2][3]int
-	for i := 0; i < 2; i++ {
-		for j := 0; j < 3; j++ {
-			twoD[i][j] = i + j
-		}
-	}
+}
 
+// 二维切片的初始化，排序
+func Test2DSlice(t *testing.T) {
+	twoD := [][]int{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}
+	sort.Slice(twoD, func(i, j int) bool {
+		if len(twoD[i]) <= 3 || len(twoD[j]) <= 3 {
+			return false
+		}
+		return twoD[i][3] > twoD[j][3]
+	})
+	t.Log(twoD)
+}
+
+// 2个切片的 append 追加
+func TestSliceAppend(t *testing.T) {
+	var s = []int{1, 2, 3, 4, 5}
+	var b = []int{6, 7, 8, 9, 10}
+	s = append(s, b...)
+	t.Log(s)
 }
 
 // 切片长度自动扩容，前一次的2倍
@@ -76,7 +89,7 @@ func TestSliceComparing(t *testing.T) {
 	// b := []int{1, 3, 5}
 	// slice can only be compared to nil
 	// if a == b {
-	//	t.Log("equal")
+	// 	t.Log("equal")
 	// }
 
 	if a == nil {
