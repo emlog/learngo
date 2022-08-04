@@ -26,3 +26,9 @@ func TestTime(t *testing.T) {
 	var cstSh, _ = time.LoadLocation("Asia/Shanghai")
 	t.Log("SH : ", time.Now().In(cstSh).Format("2006-01-02 15:04:05"))
 }
+
+// 毫秒时间戳
+func TestMillitime(t *testing.T) {
+	timeStamp := time.Now().UnixMilli()
+	t.Log(timeStamp)
+}

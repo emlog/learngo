@@ -85,14 +85,14 @@ var x int = 1
 var y = 1
 var a, s = 100, "abc"
 var {
-    x, y int
-    a, s = 100, "abc"
+x, y int
+a, s = 100, "abc"
 }
 
 // 简短模式：只能在函数内部使用，简短变量声明被广泛用于大部分的局部变量的声明和初始化。
 func main() {
-    x := 100
-    a, s := 1, "abc"
+x := 100
+a, s := 1, "abc"
 }
 ```
 
