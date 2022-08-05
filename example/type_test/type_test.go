@@ -1,7 +1,9 @@
 // 数据类型的使用和定义
 package type_test
 
-import "testing"
+import (
+	"testing"
+)
 
 type MyInt int64
 
@@ -27,4 +29,12 @@ func TestString(t *testing.T) {
 	t.Log("*" + s + "*") // 初始化零值是“”
 	t.Log(len(s))
 
+}
+
+// 类型断言测试
+func TestAssertion(t *testing.T) {
+	var x interface{}
+	x = "10"
+	value, ok := x.(int)
+	t.Log(value, ",", ok)
 }
