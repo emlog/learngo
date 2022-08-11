@@ -10,24 +10,22 @@ import (
 
 // 测试：字符串连接
 func TestConcatStringByAdd(t *testing.T) {
-	assert := assert.New(t)
 	elems := []string{"1", "2", "3", "4", "5"}
 	ret := ""
 	for _, elem := range elems {
 		ret += elem
 	}
-	assert.Equal("12345", ret)
+	assert.Equal(t, "12345", ret)
 }
 
 // 测试：使用 buf.WriteString来连接字符串
 func TestConcatStringByBytesBuffer(t *testing.T) {
-	assert := assert.New(t)
 	var buf bytes.Buffer
 	elems := []string{"1", "2", "3", "4", "5"}
 	for _, elem := range elems {
 		buf.WriteString(elem)
 	}
-	assert.Equal("12345", buf.String())
+	assert.Equal(t, "12345", buf.String())
 }
 
 // 基准测试：字符串连接

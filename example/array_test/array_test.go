@@ -22,22 +22,20 @@ func TestArrayInt(t *testing.T) {
 
 // 数组遍历
 func TestArrayTravel(t *testing.T) {
-	arr := [...]int{99: 1} // 定义有100个元素的数组arr，除最后一个是1外，其他都是0，没有指定值得索引位置被赋予类型零值
+	arr := [...]int{99: 1} // 定义有100个元素的数组arr，除最后一个是1外，其他都是0，没有指定值的索引位置被赋予类型零值。
 
-	// range
 	for k, v := range arr {
 		t.Log(k, v)
 	}
 
 	arr1 := [...]int{2, 3, 4, 5, 6}
 
-	// range
 	for k, v := range arr1 {
 		t.Log(k, v)
 	}
 }
 
-// 截取数组中的第一段
+// 数组的截取
 func TestArraySection(t *testing.T) {
 	arr3 := [...]int{0, 1, 2, 3, 4, 5, 6, 7, 8}
 	arrSec1 := arr3[1:4] // 从下标1开始，到下标4结束（包括下标1，不包括下标4）

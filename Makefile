@@ -78,6 +78,5 @@ lint:
 		echo "> 不使用brew install，原因暂时无法指定版本安装";\
 		echo "> 关于golangci-lint更多信息，请查阅 https://golangci-lint.run/usage/quick-start/";\
 		echo "> 若提示无法找到golangci-lint，尝试 source ~/.bashrc 或 ~/.zshrc";\
-		curl -sSfL https://gitlab.luojilab.com/snippets/26/raw | sh -s -- -b $(go env GOPATH)/bin ${GOCILINT_VERSION};\
 	fi
 	@golangci-lint run
