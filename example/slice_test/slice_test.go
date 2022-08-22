@@ -40,6 +40,14 @@ func TestSliceInit(t *testing.T) {
 
 }
 
+// 遍历切片
+func TestLoopOverSlice(t *testing.T) {
+	s := []int{1, 2, 3, 4, 5}
+	for _, v := range s {
+		t.Log(v)
+	}
+}
+
 // 二维切片的初始化，排序
 func Test2DSlice(t *testing.T) {
 	twoD := [][]int{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}
