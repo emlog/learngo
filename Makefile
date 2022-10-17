@@ -64,7 +64,7 @@ swag:
     	swag i --pd --parseInternal --parseDepth 1 -g main.go; \
     fi \
 
-# 可以本地创建vendor目录用户开发调试，但不可同步到代码库
+
 vendor:
 	@-echo -e ${CGREEN} "make vendor........................................................."
 	-GO111MODULE="on" go mod tidy
