@@ -27,6 +27,15 @@ func TestString(t *testing.T) {
 	t.Logf("世 UTF8 %x", s)
 }
 
+func TestString2Byte(t *testing.T) {
+	s := "abc"
+	b := []byte(s)  // 字符串转字节切片
+	s2 := string(b) // 字节切片转字符串
+	t.Log(s2)
+	b2 := []byte{'d', 'e', 'f'} // byte is an alias for uint8
+	t.Logf("%d", b2[1])
+}
+
 func TestStringToRune(t *testing.T) {
 	s := "中华人民共和国"
 	for _, c := range s {
