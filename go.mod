@@ -1,4 +1,4 @@
-module github.com/emlog/goexample
+module github.com/emlog/learngo
 
 go 1.16
 
