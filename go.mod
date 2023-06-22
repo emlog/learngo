@@ -7,5 +7,5 @@ require (
 	github.com/go-sql-driver/mysql v1.6.0
 	github.com/stretchr/testify v1.7.1
 	github.com/swaggo/swag v1.8.0
-	golang.org/x/net v0.0.0-20220127200216-cd36cc0744dd // indirect
+	golang.org/x/net v0.7.0 // indirect
 )
